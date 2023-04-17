@@ -1,0 +1,31 @@
+.rankings {
+   height: 100vh;
+   background: url('../images/banners/3-desktop.jpg');
+   background-size: cover;
+   background-attachment: fixed;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.rankings table {
+   width: 80%;
+}
+.rankings table tbody tr td img {
+   width: 50px;
+}
+
+@media (max-width: 768px) {
+   .rankings {
+      height: 100vh;
+      background: url('../images/banners/3-movil.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   .rankings table {
+      width: 90%;
+      margin: auto;
+   }
+}

@@ -1,0 +1,73 @@
+#calendar {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: url('../images/banners/2-desktop.jpg');
+   background-size: cover;
+   background-attachment: fixed;
+   position: relative;
+}
+#calendar h1 {
+   padding-left: 50px;
+   padding-bottom: 50px;
+}
+#calendar section {
+   width: 80%;
+   margin: auto;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+#calendar section article {
+   margin: 20px 50px;
+   border-radius: 10px;
+   background-color: rgba(242, 242, 242, 0.2);
+   backdrop-filter: blur(4px);
+   display: flex;
+   flex-direction: column;
+}
+#calendar section article h3 {
+   padding: 10px 0;
+   text-align: center;
+   font-size: 20px;
+   border-bottom: 1px solid #00000042;
+   border-top-left-radius: 10px;
+   border-top-right-radius: 10px;
+}
+#calendar section article h4 {
+   padding: 5px 0;
+   text-align: center;
+}
+#calendar section article p {
+   padding: 5px 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+#calendar section article p span {
+   padding: 0 10px;
+   font-size: 40px;
+}
+
+
+@media (max-width: 768px) {
+   #calendar {
+      background: url('../images/banners/2-movil.jpg');
+      background-size: cover;
+   }
+   #calendar section article {
+      width: 110%;
+      margin: 20px 0;
+   }
+   #calendar section article div p span {
+      font-size: 20px;
+   }
+   #calendar section article div p span img {
+      width: 50px;
+   }
+   #calendar table {
+      width: 90%;
+      margin: auto;
+   }
+}

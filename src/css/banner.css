@@ -1,0 +1,17 @@
+.banner {
+   height: 100vh;
+}
+.banner #banner {
+   display: inline-block;
+   position: relative;
+   top: 40vh;
+   left: 13vw;
+}
+.banner #banner p {
+   color: #fff;
+   font-size: 1.3vw;
+}
+.banner #banner hgroup h1 {
+   font-size:4vw;
+   color: #fff;
+}

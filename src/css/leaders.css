@@ -1,0 +1,66 @@
+#leaders section {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+}
+#leaders section article  {
+   width: 90%;
+   height: 90vh;
+   padding: 0;
+   margin: 50px auto;
+   overflow-y: auto;
+   background-color: rgba(240, 248, 255, 0);
+}
+#leaders section article::-webkit-scrollbar {
+   width: 5px;
+   background-color: rgba(240, 248, 255, 0);
+}
+#leaders section article::-webkit-scrollbar-thumb {
+   background-color: #0d6efd;
+   border-radius: 5px;
+}
+#leaders section table thead tr:nth-child(1) {
+   font-size: 30px;
+}
+#leaders section table thead tr {
+   background-color: #fff;
+   color: #000;
+}
+#leaders section table tbody tr:nth-child(odd) {
+   background-color: rgb(255, 255, 255);
+}
+#leaders section table tbody tr {
+   cursor: pointer;
+}
+#leaders section table tbody img {
+   width: 50px;
+}
+
+/* ----- MODAL ----- */
+.card-body .mb-3 .mb-2 {
+   display: flex;
+   justify-content: space-between;
+}
+.card-body .mb-3 img {
+   width: 100px;
+}
+.card-body .mb-3 img:nth-child(2) {
+   width: 100px;
+   height: 100px;
+}
+
+
+@media (max-width: 768px) {
+   #leaders section table thead tr:nth-child(1) th {
+      font-size: 25px;
+   }
+   #leaders section article table thead tr th {
+      font-size: 14px;
+   }
+   #leaders section article table tbody tr td {
+      font-size: 12px;
+   }
+   #leaders section article table tbody tr td img {
+      width: 50px;
+   }
+}

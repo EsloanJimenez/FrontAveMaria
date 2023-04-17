@@ -1,0 +1,97 @@
+.btn {
+   margin: 10px 5px;
+   padding: 5px 10px;
+   text-decoration: none;
+   font-size: 18px;
+   border: 1px solid black;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: all ease .5s;
+}
+.btn-info {
+   border: 1px solid #0dcaf0;
+   color: #0dcaf0;
+}
+.btn-info:hover {
+   background-color: #0dcaf0;
+   color: #000;
+}
+.btn-delete {
+   border: 1px solid red;
+   color: red;
+}
+.btn-delete:hover {
+   background-color: red;
+   color: #000;
+}
+.btn-primary {
+   background-color: #0d6efd;
+   color: #fff;
+   border: 0;
+}
+.btn-primary:hover {
+   background-color: #0a56c8;
+}
+.btn-secondary {
+   background-color: #666f77;
+   color: #fff;
+}
+.btn-secondary:hover {
+   background-color: #474d52;
+}
+
+/*--------------------------------------*/
+.btn-light, #selectGame {
+   width: 50px;
+   height: 50px;
+   margin: 5px;
+   border-radius: 10px;
+   background-color: #0d6dfd00;
+   cursor: pointer;
+}
+.btn-register span,
+ #selectGame span,
+ .btn-light-primary span,
+ .btn-light-delete span,
+ .btn-light-secondary span {
+   font-size: 25px;
+   transition: all ease 1s;
+}
+.btn-register span, .btn-light-primary {
+   color: #0d6efd;
+}
+.btn-light-delete span {
+   color: red
+}
+.btn-light-secondary span {
+   color: #666f77;
+}
+.btn-register:hover > span, 
+#selectGame:hover > span,
+.btn-light:hover > span {
+   color: #fff;
+}
+.btn-register:hover, .btn-light-primary:hover {
+   border: 2px solid #fff;
+   background-color: #0d6efd;
+}
+.btn-light-delete:hover {
+   border: 2px solid #fff;
+   background-color: red;
+}
+.btn-light-secondary:hover {
+   border: 2px solid #fff;
+   background-color: #666f77;
+}
+.btn-register {
+   border: 2px solid #0d6efd;
+}
+.btn-light-primary {
+   border: 2px solid #0d6efd;
+}
+.btn-light-delete {
+   border: 2px solid red;
+}
+.btn-light-secondary {
+   border: 2px solid #666f77;
+}

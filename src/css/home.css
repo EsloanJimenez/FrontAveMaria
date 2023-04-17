@@ -1,0 +1,45 @@
+.background {
+   width: 100%;
+   height: 100vh;
+}
+.background .BannerHome {
+   height: 100vh;
+   background: url(../images/banners/1-desktop.jpg);
+   background-size: cover;
+   background-attachment: fixed;
+}
+.fondoLeaders {
+   width: 100%;
+   height: 100vh;
+   background: linear-gradient(90deg, blue, red,   purple);
+}
+.fondoLeaders .BannerHome {
+   width: 100%;
+   margin: auto;
+   padding-top: 20%;
+   display: flex;
+   justify-content: space-between;
+}
+.fondoLeaders .player img {
+   width: 300px;
+}
+.background .BannerHome img {
+   width: 1000px;
+   opacity: .6;
+}
+
+@media (max-width: 768px) {
+   .background {
+      height: 100vh;
+   }
+   .background .BannerHome {
+      height: 100vh;
+      background: url(../images/banners/1-movil.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+   }
+   .background .BannerHome img {
+      width: 400px;
+   }
+}

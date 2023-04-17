@@ -1,0 +1,44 @@
+.hide {
+   overflow: hidden;
+}
+/* ----- TOP ----- */
+.fadeUp {
+   opacity: 0;
+   transform: translateY(-40%);
+   transition: all ease 1.5s;
+}
+.fade-Up {
+   opacity: 1;
+   transform: translateY(0)
+}
+/* ----- RIGHT ----- */
+.fadeRight {
+   opacity: 0;
+   transform: translateX(40%);
+   transition: all ease 1.5s;
+}
+.fade-Right {
+   opacity: 1;
+   transform: translateX(0)
+}
+/* ----- BOTTOM ----- */
+.fadeDown {
+   opacity: 0;
+   transform: translateY(40%);
+   transition: all ease 1.5s;
+}
+.fade-Down {
+   opacity: 1;
+   transform: translateY(0)
+}
+/* ----- LEFT ----- */
+.fadeLeft {
+   opacity: 0;
+   transform: translateX(-40%);
+   transition: all ease 1.5s;
+}
+.fade-Left {
+   opacity: 1;
+   overflow: hidden;
+   transform: translateX(0)
+}

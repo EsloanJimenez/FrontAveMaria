@@ -1,0 +1,101 @@
+header {
+   width: 100%;
+   position: fixed;
+   top: 0;
+   z-index: 100;
+}
+
+.navBar {
+   width: 100%;
+   background-color: #0d6efd;
+   padding: 20px;
+   display: flex;
+   justify-content: space-between;
+   color: #fff;
+   cursor: pointer;
+   font-size: 1.5em;
+}
+
+.main,
+.subMain {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+
+}
+
+.main {
+   width: 100%;
+   height: 100vh;
+   background-color: #5555559e;
+   backdrop-filter: blur(4px);
+   margin-left: -100%;
+   transition: all ease .5s;
+}
+
+li a {
+   display: block;
+   padding: 20px;
+   color: #fff;
+   font-size: 1.2em;
+   text-decoration: none;
+}
+
+.subMain a {
+   background-color: #333;
+   padding-left: 50px;
+   background-color: #00000053;
+   backdrop-filter: blur(6px);
+}
+
+.subMain {
+   height: 0;
+   overflow: hidden;
+   transition: all ease .5s;
+}
+
+.view {
+   margin-left: 0;
+}
+
+@media (min-width: 1024px) {
+   .navBar {
+      display: none;
+   }
+
+   .main {
+      height: 60px;
+      margin-left: 0;
+      display: flex;
+      background-color: #0d6efd;
+   }
+
+   .containerSubMain {
+      position: relative;
+   }
+   .subMain li{
+      transition: all ease 1s;
+   }
+   .subMain li:hover  {
+      background-color: #0000005b;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: inset 1px 1px 2px #fff;
+   }
+
+   .subMain {
+      position: absolute;
+      top: 60px;
+      width: 200px;
+      overflow: visible;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+   }
+
+   .containerSubMain:hover .subMain {
+      opacity: 1;
+      visibility: visible;
+      background-color: #ac602e;
+   }
+}

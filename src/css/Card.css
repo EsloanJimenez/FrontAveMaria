@@ -1,0 +1,44 @@
+.totales {
+   padding: 75px 50px;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+.totales a {
+   height: 0;
+   text-decoration: none;
+}
+.totales a .total{
+   width: 30em;
+   height: 140px;
+   border-radius: 20px;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+   transition: all ease-out .3s;
+}
+.totales a:hover .total{
+   box-shadow: 0 0 15px #000;
+   transform: scale(1.02);
+}
+.totales a .total .titulo {
+   padding-left: 30px;
+   color: #000;
+   position: relative;
+   top: 50px;
+   font-size: 20px;
+}
+.totales a .total .titulo h3:nth-child(1) {
+   font-size: 40px;
+}
+.totales a .total .icono {
+   width: 200px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #fff;
+   font-size: 75px;
+}
+.totales a .total .icono img {
+   width: 100px;
+}

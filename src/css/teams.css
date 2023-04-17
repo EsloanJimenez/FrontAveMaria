@@ -1,0 +1,51 @@
+.team .BannerHome img {
+   width: 100%;
+   height: 100vh;
+}
+.teams {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.teams section {
+   width: 80%;
+   margin: auto;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+.teams section article {
+   width: 300px;
+   padding: 0px;
+   margin: 20px 50px;
+   position: relative;
+   border-radius: 10px;
+}
+.teams section article img {
+   width: 300px;
+   height: 200px;
+   border-radius: 10px;
+}
+.teams section article img:nth-child(2) {
+   width: 75px;
+   height: 50px;
+   position: absolute;
+   bottom: 10px;
+   left: 10px;
+}
+@media (max-width: 768px) {
+   .team .BannerHome img {
+      width: 100%;
+      height: auto;
+      margin-top: 65px;
+   }
+   .teams .BannerHome #court {
+      top: 50px;
+      left: 10px;
+   }
+   .teams .BannerHome #team {
+      right: 10px;
+      bottom: 50px;
+   }
+}
