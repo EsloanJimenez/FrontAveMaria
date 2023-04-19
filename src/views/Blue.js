@@ -38,7 +38,7 @@ export const Blue = () => {
       const PercentageStati = await axios(`${url}viewPlayerPercentageStati`);
       setPlayerPercentageStati(PercentageStati.data);
 
-      alert('se muestra')
+      alert('funciono la prueba')
    }
 
    return(
