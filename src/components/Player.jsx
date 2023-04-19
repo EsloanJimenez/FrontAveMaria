@@ -1,32 +1,31 @@
-// import { useEffect, useState } from 'react'
-// import axios from 'axios';
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 import '../css/player.css'
 
-export const Player = ({player, playerStati, playerTotalStati, playerPercentageStati}) => {
-   // const [player, setPlayer] = useState([]);
-   // const [playerStati, setPlayerStati] = useState([]);
-   // const [playerTotalStati, setPlayerTotalStati] = useState([]);
-   // const [playerPercentageStati, setPlayerPercentageStati] = useState([]);
+export const Player = () => {
+   const [player, setPlayer] = useState([]);
+   const [playerStati, setPlayerStati] = useState([]);
+   const [playerTotalStati, setPlayerTotalStati] = useState([]);
+   const [playerPercentageStati, setPlayerPercentageStati] = useState([]);
    
-   // useEffect(() => {
-   //    getPlayer();
-   // }, [])
+   useEffect(() => {
+      getPlayer();
+   }, [])
 
-   // const getPlayer = async (id) => {
-   //    console.log(id);
-   //    const py = await axios('http://localhost:9000/api/viewTeam1/1');
-   //    setPlayer(py.data);
+   const getPlayer = async () => {
+      const py = await axios('http://localhost:9000/api/viewTeam1/4');
+      setPlayer(py.data);
 
-   //    const stati = await axios('http://localhost:9000/api/viewPlayerStati/' + 9);
-   //    setPlayerStati(stati.data);
+      const stati = await axios('http://localhost:9000/api/viewPlayerStati/' + 16);
+      setPlayerStati(stati.data);
 
-   //    const totalStati = await axios('http://localhost:9000/api/viewPlayerTotalStati');
-   //    setPlayerTotalStati(totalStati.data);
+      const totalStati = await axios('http://localhost:9000/api/viewPlayerTotalStati/' + 16);
+      setPlayerTotalStati(totalStati.data);
 
-   //    const PercentageStati = await axios('http://localhost:9000/api/viewPlayerPercentageStati');
-   //    setPlayerPercentageStati(PercentageStati.data);
-   // }
+      const PercentageStati = await axios('http://localhost:9000/api/viewPlayerPercentageStati/' + 16);
+      setPlayerPercentageStati(PercentageStati.data);
+   }
 
    return(
          <section className='player'>
@@ -38,6 +37,7 @@ export const Player = ({player, playerStati, playerTotalStati, playerPercentageS
                         <figcaption>
                            <p>{reg.fullName}</p>
                            <p>{reg.jacket}</p>
+                           <p>{reg.idPlayer}</p>
                         </figcaption>
                      </aside>
                      <table>
