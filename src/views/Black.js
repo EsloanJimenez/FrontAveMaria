@@ -29,13 +29,13 @@ export const Black = () => {
       const py = await axios(`${url}viewTeam1/1`);
       setPlayer(py.data);
 
-      const stati = await axios(`${url}viewPlayerStati`);
+      const stati = await axios(`${url}viewPlayerStati/` + 17);
       setPlayerStati(stati.data);
 
-      const totalStati = await axios(`${url}viewPlayerTotalStati`);
+      const totalStati = await axios(`${url}viewPlayerTotalStati/` + 17);
       setPlayerTotalStati(totalStati.data);
 
-      const PercentageStati = await axios(`${url}viewPlayerPercentageStati`);
+      const PercentageStati = await axios(`${url}viewPlayerPercentageStati/` + 17);
       setPlayerPercentageStati(PercentageStati.data);
    }
    
@@ -57,14 +57,6 @@ export const Black = () => {
             playerTotalStati = {playerTotalStati}
             playerPercentageStati = {playerPercentageStati}
          />
-
-         {/* <AsideBanner />
-
-         <EffectCurva />
-
-         <Experiencia />
-
-         <Footer /> */}
 
          <div id="opaco"></div>
       </>

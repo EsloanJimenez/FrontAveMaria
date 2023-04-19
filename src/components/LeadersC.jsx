@@ -255,11 +255,11 @@ export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderSto
                            <tr>
                               <td>%</td>
                               <td>{pts}</td>
-                              <td>{ast}</td>
-                              <td>{rbt}</td>
-                              <td>{st}</td>
-                              <td>{rbo}</td>
-                              <td>{ft}</td>
+                              <td>{asts}</td>
+                              <td>{rbts}</td>
+                              <td>{sto}</td>
+                              <td>{rbos}</td>
+                              <td>{fts}</td>
                            </tr>
                      </table>
                   </div>

@@ -13,11 +13,12 @@ export const Player = ({player, playerStati, playerTotalStati, playerPercentageS
    //    getPlayer();
    // }, [])
 
-   // const getPlayer = async () => {
-   //    const py = await axios('http://localhost:9000/api/viewTeam1/' + idTe.idTe);
+   // const getPlayer = async (id) => {
+   //    console.log(id);
+   //    const py = await axios('http://localhost:9000/api/viewTeam1/1');
    //    setPlayer(py.data);
 
-   //    const stati = await axios('http://localhost:9000/api/viewPlayerStati');
+   //    const stati = await axios('http://localhost:9000/api/viewPlayerStati/' + 9);
    //    setPlayerStati(stati.data);
 
    //    const totalStati = await axios('http://localhost:9000/api/viewPlayerTotalStati');

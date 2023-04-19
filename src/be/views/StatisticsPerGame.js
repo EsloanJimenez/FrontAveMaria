@@ -29,7 +29,7 @@ export const StatisticsPerGame = () => {
    const [ptTeam2, setPtTeam2] = useState([]);
 
    const [ids, setIds] = useState('');
-   const [nameGame, setNameGame] = useState(3);
+   const [nameGame, setNameGame] = useState(4);
    const [nameTeam, setNameTeam] = useState('');
    const [namePlayer, setNamePlayer] = useState('');
 
@@ -130,12 +130,12 @@ export const StatisticsPerGame = () => {
    }
 
    const validate = () => {
-      if(nameGame.trim() === '') show_alerta('Escribe el nombre del partido', 'warning')
+      if(nameGame === '') show_alerta('Escribe el nombre del partido', 'warning')
       else if(nameTeam.trim() === '') show_alerta('Escribe el nombre del equipo', 'warning')
       else if(namePlayer.trim() === '') show_alerta('Escribe el nombre del jugador', 'warning')
       else {
          if(operation === 1) {
-            parameters = {game: nameGame.trim(), team: nameTeam.trim(), player: namePlayer.trim()};
+            parameters = {game: nameGame, team: nameTeam, player: namePlayer};
 
             const requestInit = {
                method: 'POST',

@@ -14,7 +14,7 @@ import '../css/register.css'
 import '../css/buttons.css'
 
 export const Calendar = () => {
-   const url = 'https://apiavemaria.onrender.com/api/calendar'
+   const url = 'http://localhost:9000/api/calendar'
 
    const [calendar, setCalendar] = useState([]);
    const [ids, setIds] = useState('');
@@ -38,7 +38,7 @@ export const Calendar = () => {
       const res = await axios.get(url);
       setCalendar(res.data);
       
-      const reg = await axios.get('https://apiavemaria.onrender.com/api/team');
+      const reg = await axios.get('http://localhost:9000/api/team');
       setTeamList(reg.data);
    }
 
@@ -122,7 +122,7 @@ export const Calendar = () => {
                body: JSON.stringify(parameters)
             }
       
-            fetch('https://apiavemaria.onrender.com/api/updateCalendar/' + ids, requestInit)
+            fetch('http://localhost:9000/api/updateCalendar/' + ids, requestInit)
             .then(res => res.text())
             .then(res => {
                let msj = 'Jugador Actualizado';
@@ -157,7 +157,7 @@ export const Calendar = () => {
                method: 'DELETE'
             }
       
-            fetch('https://apiavemaria.onrender.com/api/deleteCalendar/' + id, requestInit)
+            fetch('http://localhost:9000/api/deleteCalendar/' + id, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
