@@ -38,7 +38,7 @@ export const Header = () => {
       <div id="home">
           {/* ----- HEADER ----- */}
          <header>
-            <span class="navBar" id="btnMain"><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
+            <span className="navBar" id="btnMain"><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
             <nav className="mainNav">
                <ul className='main' id='main'>
                   <li><Link to="/">Inicio</Link></li>
@@ -52,7 +52,7 @@ export const Header = () => {
                         <li><Link to="/views/white">Blanco</Link></li>
                         <li><Link to="/views/black">Negro</Link></li>
                         <li><Link to="/views/yellow">Amarillo</Link></li>
-                        <li><Link to="/views/morado">purple</Link></li>
+                        <li><Link to="/views/purple">Morado</Link></li>
                      </ul>
                   </li>
                   <li><Link to="/views/leaders">Estadisticas</Link></li>

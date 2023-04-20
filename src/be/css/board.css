@@ -3,6 +3,8 @@
    height: 50px;
    display: flex;
    justify-content: center;
+   position: relative;
+   top: 100px;
 }
 .board .artBoard {
    width: 75%;

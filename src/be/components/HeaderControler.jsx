@@ -39,7 +39,7 @@ export const HeaderControler = () => {
       <div id="home">
           {/* ----- HEADER ----- */}
          <header>
-            <span class="navBar" id="btnMain"><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
+            <span className="navBar" id="btnMain"><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
             <nav className="mainNav">
                <ul className='main' id='main'>
                   <li><Link to="/">Inicio</Link></li>

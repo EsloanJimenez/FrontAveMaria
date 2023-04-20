@@ -1,42 +1,19 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useState } from 'react';
+
+import { closeClient } from '../js/RegistrationForm';
+import { PlayerStati } from './PlayerStati';
+import { PlayerTotalStati } from './PlayerTotalStati';
+import { PlayerPercentageStati } from './PlayerPercentageStati';
 
 import '../css/leaders.css'
 
-import { closeClient } from '../js/RegistrationForm';
-
-export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderStoppers, leaderRobberies}) => {
-   const url = 'http://localhost:9000/api/';
-
-   const [viewPlayer, setViewPlayer] = useState([]);
-
-   const [ids, setIds] = useState('');
+export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderStoppers, leaderRobberies }) => {
+   const [ids, setIds] = useState(0);
    const [namePlayer, setNamePlayer] = useState('');
    const [iconTeam, setIconTeam] = useState(null);
    const [photoPlayer, setPhotoPlayer] = useState(null);
-   const [pt, setPt] = useState('');
-   const [pts, setPts] = useState('');
-   const [ast, setAst] = useState('');
-   const [asts, setAsts] = useState('');
-   const [rbt, setRbt] = useState('');
-   const [rbts, setRbts] = useState('');
-   const [st, setSt] = useState('');
-   const [sto, setSto] = useState('');
-   const [rbo, setRbo] = useState('');
-   const [rbos, setRbos] = useState('');
-   const [ft, setFt] = useState('');
-   const [fts, setFts] = useState('');
 
-   useEffect(() => {
-      getViewPlayer();
-   }, []);
-
-   const getViewPlayer = async (id) => {
-      const vp = await axios(`${url}statiPlayer/${id}`);
-      setViewPlayer(vp.data);
-   }
-
-   const openModal = async (id, namePlayer, iconTeam, photoPlayer, pt, pts, ast, asts, rbt, rbts, st, sto, rbo, rbos, ft, fts) => {
+   const openModal = async (id, namePlayer, iconTeam, photoPlayer) => {
       const fund_new_client = document.querySelector(".container-form");
       fund_new_client.classList.remove('hide_font');
 
@@ -44,26 +21,14 @@ export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderSto
          const fadeUp = document.querySelector('.card');
          fadeUp.classList.add('fade-Up');
       }, 100);
-      
+
       setIds(id);
       setNamePlayer(namePlayer);
       setIconTeam(iconTeam);
       setPhotoPlayer(photoPlayer);
-      setPt(pt);
-      setPts(pts);
-      setAst(ast);
-      setAsts(asts);
-      setRbt(rbt);
-      setRbts(rbts);
-      setSt(st);
-      setSto(sto);
-      setRbo(rbo);
-      setRbos(rbos);
-      setFt(ft);
-      setFts(fts);
    }
-   
-   return(
+
+   return (
       <div id='leaders'>
          <h1>Lideres</h1>
 
@@ -84,8 +49,8 @@ export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderSto
                   <tbody>
                      {
                         leaderPoints.map((reg, i) =>
-                           <tr onClick={() => openModal(reg.idPlayer, reg.fullName, reg.iconTeam, reg.photo, reg.pt, reg.pts, reg.ast, reg.asts, reg.rbt, reg.rbts, reg.st, reg.sto, reg.rbo, reg.rbos, reg.ft, reg.fts)}>
-                              <td>{i+1}</td>
+                           <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
+                              <td>{i + 1}</td>
                               <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
@@ -115,8 +80,8 @@ export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderSto
                   <tbody>
                      {
                         leaderAssists.map((reg, i) =>
-                           <tr onClick={() => openModal(reg.idPlayer, reg.fullName, reg.iconTeam, reg.photo, reg.pt, reg.pts, reg.ast, reg.asts, reg.rbt, reg.rbts, reg.st, reg.sto, reg.rbo, reg.rbos, reg.ft, reg.fts)}>
-                              <td>{i+1}</td>
+                           <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
+                              <td>{i + 1}</td>
                               <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
@@ -146,8 +111,8 @@ export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderSto
                   <tbody>
                      {
                         leaderRebounds.map((reg, i) =>
-                           <tr onClick={() => openModal(reg.idPlayer, reg.fullName, reg.iconTeam, reg.photo, reg.pt, reg.pts, reg.ast, reg.asts, reg.rbt, reg.rbts, reg.st, reg.sto, reg.rbo, reg.rbos, reg.ft, reg.fts)}>
-                              <td>{i+1}</td>
+                           <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
+                              <td>{i + 1}</td>
                               <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
@@ -177,8 +142,8 @@ export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderSto
                   <tbody>
                      {
                         leaderStoppers.map((reg, i) =>
-                           <tr onClick={() => openModal(reg.idPlayer, reg.fullName, reg.iconTeam, reg.photo, reg.pt, reg.pts, reg.ast, reg.asts, reg.rbt, reg.rbts, reg.st, reg.sto, reg.rbo, reg.rbos, reg.ft, reg.fts)}>
-                              <td>{i+1}</td>
+                           <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
+                              <td>{i + 1}</td>
                               <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
@@ -208,8 +173,8 @@ export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderSto
                   <tbody>
                      {
                         leaderRobberies.map((reg, i) =>
-                           <tr onClick={() => openModal(reg.idPlayer, reg.fullName, reg.iconTeam, reg.photo, reg.pt, reg.pts, reg.ast, reg.asts, reg.rbt, reg.rbts, reg.st, reg.sto, reg.rbo, reg.rbos, reg.ft, reg.fts)}>
-                              <td>{i+1}</td>
+                           <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
+                              <td>{i + 1}</td>
                               <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
@@ -240,27 +205,24 @@ export const LeadersC = ({leaderPoints, leaderAssists, leaderRebounds, leaderSto
                      </div>
 
                      <table>
-                           <tr>
-                              <td>Juego</td><td>Pt</td><td>As</td><td>Rb</td><td>Tp</td><td>Rbs</td><td>Fat</td>
-                           </tr>
-                           <tr>
-                              <td>1</td>
-                              <td>{pt}</td>
-                              <td>{ast}</td>
-                              <td>{rbt}</td>
-                              <td>{st}</td>
-                              <td>{rbo}</td>
-                              <td>{ft}</td>
-                           </tr>
-                           <tr>
-                              <td>%</td>
-                              <td>{pts}</td>
-                              <td>{ast}</td>
-                              <td>{rbt}</td>
-                              <td>{st}</td>
-                              <td>{rbo}</td>
-                              <td>{ft}</td>
-                           </tr>
+                        <tr>
+                           <td>Juego</td><td>Pt</td><td>As</td><td>Rb</td><td>Tp</td><td>Rbs</td><td>Fat</td>
+                        </tr>
+                        {
+                           <PlayerStati
+                              idPlayer={ids}
+                           />
+                        }
+                        {
+                           <PlayerTotalStati
+                              idPlayer={ids}
+                           />
+                        }
+                        {
+                           <PlayerPercentageStati
+                              idPlayer={ids}
+                           />
+                        }
                      </table>
                   </div>
                </div>

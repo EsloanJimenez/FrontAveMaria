@@ -67,7 +67,7 @@ tbody tr:nth-child(even) {
    backdrop-filter: blur(8px);
 }
 table tbody img {
-   width: 200px;
+   width: 100px;
 }
 .imgStatist {
    width: 50px;

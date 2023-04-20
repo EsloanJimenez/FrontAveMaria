@@ -13,10 +13,7 @@ export const Black = () => {
    const url = 'http://localhost:9000/api/'
 
    const [player, setPlayer] = useState([]);
-   const [playerStati, setPlayerStati] = useState([]);
-   const [playerTotalStati, setPlayerTotalStati] = useState([]);
-   const [playerPercentageStati, setPlayerPercentageStati] = useState([]);
-   
+
    useEffect(() => {
       getPlayer();
 
@@ -28,15 +25,6 @@ export const Black = () => {
    const getPlayer = async () => {
       const py = await axios(`${url}viewTeam1/1`);
       setPlayer(py.data);
-
-      const stati = await axios(`${url}viewPlayerStati`);
-      setPlayerStati(stati.data);
-
-      const totalStati = await axios(`${url}viewPlayerTotalStati`);
-      setPlayerTotalStati(totalStati.data);
-
-      const PercentageStati = await axios(`${url}viewPlayerPercentageStati`);
-      setPlayerPercentageStati(PercentageStati.data);
    }
    
    return(
@@ -53,18 +41,7 @@ export const Black = () => {
 
          <Player
             player = {player}
-            playerStati = {playerStati}
-            playerTotalStati = {playerTotalStati}
-            playerPercentageStati = {playerPercentageStati}
          />
-
-         {/* <AsideBanner />
-
-         <EffectCurva />
-
-         <Experiencia />
-
-         <Footer /> */}
 
          <div id="opaco"></div>
       </>

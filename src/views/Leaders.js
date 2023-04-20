@@ -1,9 +1,10 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import {Header} from "../components/Header";
 import { LeadersC } from "../components/LeadersC";
 
 import '../css/home.css';
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 const Leaders = () => {
    const url = 'http://localhost:9000/api/'

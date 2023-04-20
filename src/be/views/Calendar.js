@@ -14,7 +14,7 @@ import '../css/register.css'
 import '../css/buttons.css'
 
 export const Calendar = () => {
-   const url = 'https://apiavemaria.onrender.com/api/calendar'
+   const url = 'http://localhost:9000/api/calendar'
 
    const [calendar, setCalendar] = useState([]);
    const [ids, setIds] = useState('');
@@ -38,7 +38,7 @@ export const Calendar = () => {
       const res = await axios.get(url);
       setCalendar(res.data);
       
-      const reg = await axios.get('https://apiavemaria.onrender.com/api/team');
+      const reg = await axios.get('http://localhost:9000/api/team');
       setTeamList(reg.data);
    }
 
@@ -122,7 +122,7 @@ export const Calendar = () => {
                body: JSON.stringify(parameters)
             }
       
-            fetch('https://apiavemaria.onrender.com/api/updateCalendar/' + ids, requestInit)
+            fetch('http://localhost:9000/api/updateCalendar/' + ids, requestInit)
             .then(res => res.text())
             .then(res => {
                let msj = 'Jugador Actualizado';
@@ -157,7 +157,7 @@ export const Calendar = () => {
                method: 'DELETE'
             }
       
-            fetch('https://apiavemaria.onrender.com/api/deleteCalendar/' + id, requestInit)
+            fetch('http://localhost:9000/api/deleteCalendar/' + id, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
@@ -227,11 +227,11 @@ export const Calendar = () => {
                   <div className="card-body">
                      <div className="mb-3">
                         <label for="gameDate" className="form-label">Fecha</label>
-                        <input type="date" className="form-control" id="gameDate" name="gameDate" value={gameDate} onChange={(e) => setGameDate(e.target.value)} tabindex="2"/>
+                        <input type="date" className="form-control" id="gameDate" name="gameDate" value={gameDate} onChange={(e) => setGameDate(e.target.value)} />
                      </div>
                      <div className="mb-3">
                         <label for="nameGame" className="form-label">Nombre Partido</label>
-                        <input type="text" className="form-control" id="nameGame" name="nameGame" value={nameGame} onChange={(e) => setNameGame(e.target.value)} tabindex="1"/>
+                        <input type="text" className="form-control" id="nameGame" name="nameGame" value={nameGame} onChange={(e) => setNameGame(e.target.value)} />
                      </div>
                      <div className="mb-3">
                         <label for="team1" className="form-label">Equipo 1</label>
@@ -245,7 +245,7 @@ export const Calendar = () => {
                      </div>
                      <div className="mb-3">
                         <label for="photoTeam1" className="form-label">Foto Equipo 1</label>
-                        <input type="file" className="form-control" id="photoTeam1" name="photoTeam1" onChange={(e) => setPhotoTeam1(e.target.files[0].name)} tabindex="2"/>
+                        <input type="file" className="form-control" id="photoTeam1" name="photoTeam1" onChange={(e) => setPhotoTeam1(e.target.files[0].name)} />
                      </div>
                      <div className="mb-3">
                         <label for="team2" className="form-label">Equipo 2</label>
@@ -259,11 +259,11 @@ export const Calendar = () => {
                      </div>
                      <div className="mb-3">
                         <label for="photoTeam2" className="form-label">Foto Equipo 2</label>
-                        <input type="file" className="form-control" id="photoTeam2" name="photoTeam2" onChange={(e) => setPhotoTeam2(e.target.files[0].name)} tabindex="2"/>
+                        <input type="file" className="form-control" id="photoTeam2" name="photoTeam2" onChange={(e) => setPhotoTeam2(e.target.files[0].name)} />
                      </div>
                      <div className="mb-3">
-                        <label for="status" class="form-label">Status</label>
-                        <select class="form-control" id="status" name="status" value={status} onChange={(e) => setStatus(e.target.value)}>
+                        <label for="status" className="form-label">Status</label>
+                        <select className="form-control" id="status" name="status" value={status} onChange={(e) => setStatus(e.target.value)}>
                            <option value="0">No ha iniciado</option>
                            <option value="1">Inicio</option>
                            <option value="2">Finalizo</option>

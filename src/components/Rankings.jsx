@@ -14,7 +14,7 @@ export const Rankings = ({leagueTeam}) => {
             <tbody>
                {
                   leagueTeam.map((reg, i) =>
-                     <tr className='fadeRight'>
+                     <tr key={i} className='fadeRight'>
                         <td>{i+1}</td>
                         <td><img src={`http://localhost:9000/${reg.iconTeam}`} /></td>
                         <td>{reg.nameTeam}</td>

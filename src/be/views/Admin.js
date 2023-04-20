@@ -15,7 +15,7 @@ import '../css/buttons.css'
 import '../../css/animaciones.css'
 
 export const Admin = () => {
-   const url = 'https://apiavemaria.onrender.com/api/admin'
+   const url = 'http://localhost:9000/api/admin'
 
    const [admins, setAdmins] = useState([]);
    const [ids, setIds] = useState('');
@@ -113,7 +113,7 @@ export const Admin = () => {
                   body: JSON.stringify(parameters)
                }
          
-               fetch('https://apiavemaria.onrender.com/api/updateAdmin/' + ids, requestInit)
+               fetch('http://localhost:9000/api/updateAdmin/' + ids, requestInit)
                .then(res => res.text())
                .then(res => {
                
@@ -143,7 +143,7 @@ export const Admin = () => {
                method: 'DELETE'
             }
       
-            fetch('https://apiavemaria.onrender.com/api/deleteAdmin/' + id, requestInit)
+            fetch('http://localhost:9000/api/deleteAdmin/' + id, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
@@ -204,21 +204,21 @@ export const Admin = () => {
                   <div className="card-body">
                         <div className="mb-3">
                            <label for="name" className="form-label">Nombre Completo</label>
-                           <input type="text" className="form-control" id="name" name="name" value={fullName} onChange={(e) => setFullName(e.target.value)} tabindex="1"/>
+                           <input type="text" className="form-control" id="name" name="name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
                         </div>
                         <div className="mb-3">
                            <label for="userName" className="form-label">Nombre De Usuario</label>
-                           <input type="text" className="form-control" id="userName" name="userName" value={userName} onChange={(e) => setUserName(e.target.value)} tabindex="2"/>
+                           <input type="text" className="form-control" id="userName" name="userName" value={userName} onChange={(e) => setUserName(e.target.value)} />
                         </div>
                         <div className="mb-3">
-                           <label for="password" class="form-label">Contraseña</label>
-                           <input type="password" class="form-control" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} tabindex="3" />
+                           <label for="password" className="form-label">Contraseña</label>
+                           <input type="password" className="form-control" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
                         <div className="mb-3">
-                           <label for="verifyPassword" class="form-label">Repetir Contraseña</label>
-                           <input type="password" class="form-control" id="verifyPassword" name="verifyPassword" tabindex="4" />
+                           <label for="verifyPassword" className="form-label">Repetir Contraseña</label>
+                           <input type="password" className="form-control" id="verifyPassword" name="verifyPassword" />
                         </div>
-                        <button onClick={() => validate()} className="btn btn-primary" tabindex="5">{btnSubmit}</button>
+                        <button onClick={() => validate()} className="btn btn-primary" >{btnSubmit}</button>
                   </div>
                </div>
             </div>

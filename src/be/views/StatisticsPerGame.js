@@ -29,9 +29,9 @@ export const StatisticsPerGame = () => {
    const [ptTeam2, setPtTeam2] = useState([]);
 
    const [ids, setIds] = useState('');
-   const [nameGame, setNameGame] = useState(3);
-   const [nameTeam, setNameTeam] = useState('');
-   const [namePlayer, setNamePlayer] = useState('');
+   const [nameGame, setNameGame] = useState(6);
+   const [nameTeam, setNameTeam] = useState(0);
+   const [namePlayer, setNamePlayer] = useState(0);
 
    const [title, setTitle] = useState([]);
    const [btnSubmit, setBtnSubmit] = useState('');
@@ -49,8 +49,8 @@ export const StatisticsPerGame = () => {
    }, []);
 
    const getStatisticsPerPlayer = async () => {
-      const res = await axios.get(`${url}/calendar`);
-
+      const res = await axios.get(`${url}calendar`);
+      
       const tem1 = await axios(`${url}statisticsTeam1/${nameGame}/${res.data[nameGame-1].team1}`);
       setTeam1(tem1.data);
 
@@ -72,10 +72,9 @@ export const StatisticsPerGame = () => {
       const viewScoreTeam2 = await axios(`${url}scoreTeam2/${nameGame}/${res.data[nameGame-1].team2}`);
       setPtTeam2(viewScoreTeam2.data);
    }
-
    
    const getScore = async () => {
-      const res = await axios.get(`${url}/calendar`);
+      const res = await axios.get(`${url}calendar`);
       
       const viewScoreTeam1 = await axios(`${url}scoreTeam1/${nameGame}/${res.data[nameGame-1].team1}`);
       setPtTeam1(viewScoreTeam1.data);
@@ -85,6 +84,8 @@ export const StatisticsPerGame = () => {
 
       ptT1 = viewScoreTeam1.data[0].pt;
       ptT2 = viewScoreTeam2.data[0].pt;
+
+      console.log(viewScoreTeam1.data);
 
       parametersTeam = {idCalendar: nameGame, pointsTeam1: ptT1, pointsTeam2: ptT2};
 
@@ -130,12 +131,12 @@ export const StatisticsPerGame = () => {
    }
 
    const validate = () => {
-      if(nameGame.trim() === '') show_alerta('Escribe el nombre del partido', 'warning')
-      else if(nameTeam.trim() === '') show_alerta('Escribe el nombre del equipo', 'warning')
-      else if(namePlayer.trim() === '') show_alerta('Escribe el nombre del jugador', 'warning')
+      if(nameGame === 0) show_alerta('Escribe el nombre del partido', 'warning')
+      else if(nameTeam === 0) show_alerta('Escribe el nombre del equipo', 'warning')
+      else if(namePlayer === 0) show_alerta('Escribe el nombre del jugador', 'warning')
       else {
          if(operation === 1) {
-            parameters = {game: nameGame.trim(), team: nameTeam.trim(), player: namePlayer.trim()};
+            parameters = {game: nameGame, team: nameTeam, player: namePlayer};
 
             const requestInit = {
                method: 'POST',

@@ -19,8 +19,8 @@ export const Teams = () => {
       <div className='teams'>
          <section className='hide'>
             {
-               team.map(reg =>
-                  <article className='fadeDown'>
+               team.map((reg, i) =>
+                  <article key={i} className='fadeDown'>
                      <img width="300px" height="250px" src={'http://localhost:9000/' + reg.photoTeam} />
                      <img width="50px" src={'http://localhost:9000/' + reg.iconTeam} />
                   </article>

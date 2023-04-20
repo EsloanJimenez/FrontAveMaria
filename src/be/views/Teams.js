@@ -282,17 +282,17 @@ export const Teams = () => {
                      <form action="http://localhost:9000/api/team" method="post" enctype="multipart/form-data">
                         <div className="mb-3">
                            <label for="name" className="form-label">Nombre</label>
-                           <input type="text" className="form-control" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} tabindex="1"/>
+                           <input type="text" className="form-control" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />
                         </div>
                         <div className="mb-3">
                            <label for="photo" className="form-label">Foto</label>
-                           <input type="file" className="form-control" id="photo" name="photo" onChange={(e) => setPhoto(e.target.files[0].name)} tabindex="2"/>
+                           <input type="file" className="form-control" id="photo" name="photo" onChange={(e) => setPhoto(e.target.files[0].name)} />
                         </div>
                         <div className="mb-3">
                            <label for="logo" className="form-label">Logo</label>
-                           <input type="file" className="form-control" id="logo" name="logo" onChange={(e) => setLogo(e.target.files[0].name)} tabindex="2"/>
+                           <input type="file" className="form-control" id="logo" name="logo" onChange={(e) => setLogo(e.target.files[0].name)} />
                         </div>
-                        <button onClick={() => validate()} className="btn btn-primary" tabindex="4">{btnSubmit}</button>
+                        <button onClick={() => validate()} className="btn btn-primary" >{btnSubmit}</button>
                      </form>
                   </div>
                </div>

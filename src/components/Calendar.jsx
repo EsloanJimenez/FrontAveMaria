@@ -5,8 +5,8 @@ export const Calendar = ({calendar}) => {
       <div id='calendar'>
          <section className='hide'>
             {
-               calendar.map((reg) => 
-                  <article className="fadeUp">
+               calendar.map((reg, i) => 
+                  <article key={i} className="fadeUp">
                      <h3>{reg.nameGame}</h3>
                      <div>
                         <h4>{reg.date}</h4>
