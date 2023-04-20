@@ -1,16 +1,15 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
 import Home from "./views/Home";
 import { Timer } from "./views/Timer";
 import Calendars from "./views/Calendars";
-import { Black } from "./views/Black";
-import { Blue } from "./views/Blue";
-import { Purple } from "./views/Purple";
-import { Red } from "./views/Red";
-import { White } from "./views/White";
-import { Yellow } from "./views/Yellow";
+import { Team1 } from "./views/Team1";
+import { Team2 } from "./views/Team2";
+import { Team3 } from "./views/Team3";
+import { Team4 } from "./views/Team4";
+import { Team5 } from "./views/Team5";
+import { Team6 } from "./views/Team6";
 import Leaders from "./views/Leaders";
 
 // BACK END 
@@ -28,12 +27,12 @@ const App = () => {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/views/timer" element={<Timer />} />
         <Route exact path="/views/calendars" element={<Calendars />} />
-        <Route exact path="/views/black" element={<Black />} />
-        <Route exact path="/views/blue" element={<Blue />} />
-        <Route exact path="/views/purple" element={<Purple />} />
-        <Route exact path="/views/red" element={<Red />} />
-        <Route exact path="/views/white" element={<White />} />
-        <Route exact path="/views/yellow" element={<Yellow />} />
+        <Route exact path="/views/1" element={<Team1 />} />
+        <Route exact path="/views/2" element={<Team2 />} />
+        <Route exact path="/views/3" element={<Team3 />} />
+        <Route exact path="/views/4" element={<Team4 />} />
+        <Route exact path="/views/5" element={<Team5 />} />
+        <Route exact path="/views/6" element={<Team6 />} />
         <Route exact path="/views/leaders" element={<Leaders />} />
 
         {/* BACK END  */}

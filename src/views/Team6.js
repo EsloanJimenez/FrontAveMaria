@@ -9,7 +9,7 @@ import '../css/teams.css';
 import teamYellow from '../images/teams/yellow.jpeg';
 import { Player } from "../components/Player";
 
-export const Yellow = () => {
+export const Team6 = () => {
    const [player, setPlayer] = useState([]);
    
    useEffect(() => {

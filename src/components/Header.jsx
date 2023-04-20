@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import '../css/main.css'
 import '../css/style.css'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faAngleDown, faBars} from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
 
 export const Header = () => {
+   const [teamList, setTeamList] = useState([]);
+
    useEffect(() => {
+      getTeamList();
+
       const btnMain = document.querySelector("#btnMain");
       const main = document.querySelector("#main");
 
@@ -20,7 +25,7 @@ export const Header = () => {
 
       subMainBtn.addEventListener("click", () => {
       if (window.innerWidth < 1024) {
-         const subMain = document.querySelector(".subMain");
+         const subMain = document.querySelector(".subMain2");
          const height = subMain.scrollHeight;
 
          if (subMain.classList.contains("desplegar")) {
@@ -34,6 +39,11 @@ export const Header = () => {
       });
    }, [])
 
+   const getTeamList = async () => {
+      const tl = await axios(`http://localhost:9000/api/team`);
+      setTeamList(tl.data);
+   }
+
    return(
       <div id="home">
           {/* ----- HEADER ----- */}
@@ -43,16 +53,17 @@ export const Header = () => {
                <ul className='main' id='main'>
                   <li><Link to="/">Inicio</Link></li>
                   <li><Link to="/views/timer">Temporizador</Link></li>
-                  {/* <li><Link to="/views/calendars">Calendario</Link></li> */}
                   <li className='containerSubMain'>
                      <Link className='subMainBtn'><span>Equipos</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
-                     <ul className='subMain'>
-                        <li><Link to="/views/blue">Azul</Link></li>
-                        <li><Link to="/views/red">Rojo</Link></li>
-                        <li><Link to="/views/white">Blanco</Link></li>
-                        <li><Link to="/views/black">Negro</Link></li>
-                        <li><Link to="/views/yellow">Amarillo</Link></li>
-                        <li><Link to="/views/purple">Morado</Link></li>
+                     <ul className='subMain2'>
+                     {
+                        teamList.map((reg, i) =>
+                           <li key={i}>
+                              <Link to={`/views/${reg.idTeam}`}>{reg.nameTeam}</Link>
+                           </li>
+                           
+                        )
+                     }
                      </ul>
                   </li>
                   <li><Link to="/views/leaders">Estadisticas</Link></li>

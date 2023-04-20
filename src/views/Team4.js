@@ -6,30 +6,30 @@ import { EffectCurva } from "../components/EffectCurva";
 
 import '../css/teams.css';
 
-import teamPurple from '../images/teams/purple.jpeg';
+import teamRed from '../images/teams/red.jpeg';
 import { Player } from "../components/Player";
 
-export const Purple = () => {
-   const [player, setPlayer] = useState([]);
-   
-   useEffect(() => {
-      getPlayer();
-
-      setInterval(() => {
-         getPlayer();
-      }, 10000)
-   }, [])
-
-   const getPlayer = async () => {
-      const py = await axios(`http://localhost:9000/api/viewTeam1/5`);
-      setPlayer(py.data);
-   }
+export const Team4 = () => {
+    const [player, setPlayer] = useState([]);
+    
+    useEffect(() => {
+       getPlayer();
+ 
+       setInterval(() => {
+          getPlayer();
+       }, 10000)
+    }, [])
+ 
+    const getPlayer = async () => {
+       const py = await axios(`http://localhost:9000/api/viewTeam1/4`);
+       setPlayer(py.data);
+    }
 
    return(
       <>
          <div className="team">
             <div className="BannerHome">
-               <img src={teamPurple} />
+               <div id="court"><img src={teamRed} /></div>
             </div>
          </div>
 

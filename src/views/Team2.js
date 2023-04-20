@@ -6,14 +6,12 @@ import { EffectCurva } from "../components/EffectCurva";
 
 import '../css/teams.css';
 
-import teamBlack from '../images/teams/black.jpg';
+import teamBlue from '../images/teams/blue.jpeg';
 import { Player } from "../components/Player";
 
-export const Black = () => {
-   const url = 'http://localhost:9000/api/'
-
+export const Team2 = () => {
    const [player, setPlayer] = useState([]);
-
+   
    useEffect(() => {
       getPlayer();
 
@@ -23,15 +21,15 @@ export const Black = () => {
    }, [])
 
    const getPlayer = async () => {
-      const py = await axios(`${url}viewTeam1/1`);
+      const py = await axios(`http://localhost:9000/api/viewTeam1/2`);
       setPlayer(py.data);
    }
-   
+
    return(
       <>
          <div className="team">
             <div className="BannerHome">
-               <div id="court"><img src={teamBlack} /></div>
+               <img src={teamBlue} />
             </div>
          </div>
 

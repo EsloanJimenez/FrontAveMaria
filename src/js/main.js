@@ -10,7 +10,7 @@ const getMain = () => {
 
    subMainBtn.addEventListener("click", () => {
    if (window.innerWidth < 1024) {
-      const subMain = document.querySelector(".subMain");
+      const subMain = document.querySelector(".subMain2");
       const height = subMain.scrollHeight;
 
       if (subMain.classList.contains("desplegar")) {
