@@ -29,7 +29,7 @@ export const StatisticsPerGame = () => {
    const [ptTeam2, setPtTeam2] = useState([]);
 
    const [ids, setIds] = useState('');
-   const [nameGame, setNameGame] = useState(8);
+   const [nameGame, setNameGame] = useState(1);
    const [nameTeam, setNameTeam] = useState(0);
    const [namePlayer, setNamePlayer] = useState(0);
 
@@ -41,7 +41,7 @@ export const StatisticsPerGame = () => {
 
    useEffect(() => {
       getStatisticsPerPlayer();
-      // getScore();
+      getScore();
       
       setInterval(() => {
          getScore();
