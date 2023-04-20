@@ -55,7 +55,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.pt}</td>
-                              <td>1</td>
+                              <td>{reg.gamePlayed}</td>
                               <td>{reg.pts}</td>
                            </tr>
                         )
@@ -86,7 +86,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.ast}</td>
-                              <td>1</td>
+                              <td>{reg.gamePlayed}</td>
                               <td>{reg.asts}</td>
                            </tr>
                         )
@@ -117,7 +117,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.rbt}</td>
-                              <td>1</td>
+                              <td>{reg.gamePlayed}</td>
                               <td>{reg.rbts}</td>
                            </tr>
                         )
@@ -148,7 +148,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.st}</td>
-                              <td>1</td>
+                              <td>{reg.gamePlayed}</td>
                               <td>{reg.sto}</td>
                            </tr>
                         )
@@ -179,7 +179,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.rbo}</td>
-                              <td>1</td>
+                              <td>{reg.gamePlayed}</td>
                               <td>{reg.rbos}</td>
                            </tr>
                         )

@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./views/Home";
 import { Timer } from "./views/Timer";
-import Calendars from "./views/Calendars";
 import { Team1 } from "./views/Team1";
 import { Team2 } from "./views/Team2";
 import { Team3 } from "./views/Team3";
@@ -26,7 +25,6 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/views/timer" element={<Timer />} />
-        <Route exact path="/views/calendars" element={<Calendars />} />
         <Route exact path="/views/1" element={<Team1 />} />
         <Route exact path="/views/2" element={<Team2 />} />
         <Route exact path="/views/3" element={<Team3 />} />

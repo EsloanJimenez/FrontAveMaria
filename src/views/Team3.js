@@ -6,7 +6,7 @@ import { EffectCurva } from "../components/EffectCurva";
 
 import '../css/teams.css';
 
-import teamPurple from '../images/teams/purple.jpeg';
+import teamWhite from '../images/teams/white.jpg';
 import { Player } from "../components/Player";
 
 export const Team3 = () => {
@@ -29,7 +29,7 @@ export const Team3 = () => {
       <>
          <div className="team">
             <div className="BannerHome">
-               <img src={teamPurple} />
+               <img src={teamWhite} />
             </div>
          </div>
 

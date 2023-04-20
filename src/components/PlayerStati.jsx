@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export const PlayerStati = ({idPlayer}) => {
    const [playerStati, setPlayerStati] = useState([]);
-   console.log(idPlayer);
 
    useEffect(() => {
       getPlayerStati();

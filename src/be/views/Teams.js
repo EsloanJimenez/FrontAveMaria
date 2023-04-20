@@ -272,7 +272,7 @@ export const Teams = () => {
             </div>
 
             {/* REGISTRAR EQUIPO  */}
-            <div className="container-form hide">
+            <div className="container-form hide hide_font">
                <div className="card fadeUp">
                   <div className="card-header">
                      <span className='title'>{title}</span>

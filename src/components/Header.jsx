@@ -25,7 +25,7 @@ export const Header = () => {
 
       subMainBtn.addEventListener("click", () => {
       if (window.innerWidth < 1024) {
-         const subMain = document.querySelector(".subMain2");
+         const subMain = document.querySelector(".subMain");
          const height = subMain.scrollHeight;
 
          if (subMain.classList.contains("desplegar")) {
@@ -55,15 +55,15 @@ export const Header = () => {
                   <li><Link to="/views/timer">Temporizador</Link></li>
                   <li className='containerSubMain'>
                      <Link className='subMainBtn'><span>Equipos</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
-                     <ul className='subMain2'>
-                     {
-                        teamList.map((reg, i) =>
-                           <li key={i}>
-                              <Link to={`/views/${reg.idTeam}`}>{reg.nameTeam}</Link>
-                           </li>
-                           
-                        )
-                     }
+                     <ul className='subMain'>
+                        {
+                           teamList.map((reg, i) =>
+                              <li key={i}>
+                                 <Link to={`/views/${reg.idTeam}`}>{reg.nameTeam}</Link>
+                              </li>
+                              
+                           )
+                        }
                      </ul>
                   </li>
                   <li><Link to="/views/leaders">Estadisticas</Link></li>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 import '../../css/main.css'
 import '../../css/style.css'
@@ -9,7 +10,11 @@ import {faLocationDot, faAngleDown, faBars} from '@fortawesome/free-solid-svg-ic
 import {faWhatsapp} from '@fortawesome/free-brands-svg-icons'
 
 export const HeaderControler = () => {
+   const [teamList, setTeamList] = useState([]);
+
    useEffect(() => {
+      getTeamList();
+
       const btnMain = document.querySelector("#btnMain");
       const main = document.querySelector("#main");
 
@@ -35,6 +40,11 @@ export const HeaderControler = () => {
       });
    }, [])
 
+   const getTeamList = async () => {
+      const tl = await axios(`http://localhost:9000/api/team`);
+      setTeamList(tl.data);
+   }
+
    return(
       <div id="home">
           {/* ----- HEADER ----- */}
@@ -43,16 +53,16 @@ export const HeaderControler = () => {
             <nav className="mainNav">
                <ul className='main' id='main'>
                   <li><Link to="/">Inicio</Link></li>
-                  <li><Link to="/views/calendar">Calendario</Link></li>
                   <li className='containerSubMain'>
                      <Link to="#" className='subMainBtn'><span>Equipos</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
                      <ul className='subMain'>
-                        <li><Link to="/views/blue">Azul</Link></li>
-                        <li><Link to="/views/red">Rojo</Link></li>
-                        <li><Link to="/views/white">Blanco</Link></li>
-                        <li><Link to="/views/black">Negro</Link></li>
-                        <li><Link to="/views/yellow">Amarillo</Link></li>
-                        <li><Link to="/views/morado">purple</Link></li>
+                        {
+                           teamList.map((reg, i) =>
+                              <li key={i}>
+                                 <Link to={`/views/${reg.idTeam}`}>{reg.nameTeam}</Link>
+                              </li>
+                           )
+                        }
                      </ul>
                   </li>
                   <li><Link to="/views/leaders">Estadisticas</Link></li>
@@ -67,7 +77,6 @@ export const HeaderControler = () => {
                         <li><Link to="/be/views/statisticsPerGame">Estadisticas Por Juegos</Link></li>
                      </ul>
                   </li>
-                  {/* <li><Link to="/be/views/panel">Back End</Link></li> */}
                 </ul>
             </nav>
          </header>

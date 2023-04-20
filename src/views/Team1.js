@@ -29,7 +29,7 @@ export const Team1 = () => {
       <>
          <div className="team">
             <div className="BannerHome">
-               <div id="court"><img src={teamBlack} /></div>
+               <img src={teamBlack} />
             </div>
          </div>
 
@@ -40,8 +40,6 @@ export const Team1 = () => {
          <Player
             player = {player}
          />
-
-         <div id="opaco"></div>
       </>
    )
 }

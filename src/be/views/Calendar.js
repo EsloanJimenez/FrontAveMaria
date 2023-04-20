@@ -14,7 +14,10 @@ import '../css/register.css'
 import '../css/buttons.css'
 
 export const Calendar = () => {
-   const url = 'http://localhost:9000/api/calendar'
+   let parameters;
+
+   const url = 'http://localhost:9000/api/calendar';
+   const urlOp = 'http://localhost:9000/api/updateCalendar/';
 
    const [calendar, setCalendar] = useState([]);
    const [ids, setIds] = useState('');
@@ -169,6 +172,36 @@ export const Calendar = () => {
       });
    }
 
+   const gameStatus = (index, player, op) => {
+      if(op) {
+         player.status +=1;
+         const newArr = [...calendar];
+         newArr[index] = player;
+         setCalendar(newArr);
+
+         parameters = {idCalendar: player.idCalendar, status: player.status};
+               
+         fetch(urlOp + player.idCalendar, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(parameters)
+         }).then(res => res.text())
+      } else {
+         player.status -=1;
+         const newArr = [...calendar];
+         newArr[index] = player;
+         setCalendar(newArr);
+         
+         parameters = {idCalendar: player.idCalendar, status: player.status};
+               
+         fetch(urlOp + player.idCalendar, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(parameters)
+         }).then(res => res.text())
+      }
+   }
+
    return(
       <div>
          <HeaderControler />
@@ -195,7 +228,7 @@ export const Calendar = () => {
                   </thead>
                   <tbody id='listaCiudades'>
                      {
-                        calendar.map((reg) => (
+                        calendar.map((reg, index) => (
                            <tr key={reg.idCalendar}>
                               <td>{reg.idCalendar}</td>
                               <td>{reg.nameGame}</td>
@@ -204,7 +237,11 @@ export const Calendar = () => {
                               <td>{reg.date}</td>
                               <td>{reg.team2}</td>
                               <td>{<img src={`http://localhost:9000/${reg.photoTeam2}` } alt="imagen rota" />}</td>
-                              <td>{reg.status}</td>
+                              <td>
+                                 <button type="button" className="btn btn-delete" onClick={()=> gameStatus(index, reg, false)}>-</button>
+                                 {reg.status}
+                                 <button type="button" className="btn btn-info" onClick={()=> gameStatus(index, reg, true)}>+</button>
+                              </td>
                               <td>
                                  <button onClick={() => openModal(2, reg.idCalendar, reg.nameGame, reg.gameDate, reg.team1, reg.team2, reg.photoTeam1, reg.photoTeam2, reg.status)} className="btn btn-info">Editar</button>
                                  <button onClick={() => deleteCustomer(reg.idCalendar)} className="btn btn-delete">Eliminar</button>

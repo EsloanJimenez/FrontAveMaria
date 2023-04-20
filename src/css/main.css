@@ -17,11 +17,10 @@ header {
 }
 
 .main,
-.subMain2 {
+.subMain {
    list-style: none;
    padding: 0;
    margin: 0;
-
 }
 
 .main {
@@ -41,12 +40,12 @@ li a {
    text-decoration: none;
 }
 
-.subMain2 a {
+.subMain a {
    padding-left: 50px;
    background-color: #00000053;
 }
 
-.subMain2 {
+.subMain {
    height: 0;
    overflow: hidden;
    transition: all ease .5s;
@@ -71,33 +70,23 @@ li a {
    .containerSubMain {
       position: relative;
    }
-   .subMain2 li{
+   .subMain li{
       transition: all ease 1s;
    }
-   .subMain2 li:hover  {
+   .subMain li:hover  {
       background-color: #0000005b;
       border-radius: 10px;
       cursor: pointer;
       box-shadow: inset 1px 1px 2px #fff;
    }
-
    .subMain {
-      position: absolute;
-      top: 60px;
-      width: 200px;
-      overflow: visible;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-   }
-   .subMain2 {
       z-index: 1000;
       opacity: 0;
       overflow: hidden;
       visibility: hidden;
    }
 
-   .containerSubMain:hover .subMain2 {
+   .containerSubMain:hover .subMain {
       opacity: 1;
       height: auto;
       overflow: visible;

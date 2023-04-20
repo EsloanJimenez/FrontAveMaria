@@ -29,7 +29,7 @@ export const StatisticsPerGame = () => {
    const [ptTeam2, setPtTeam2] = useState([]);
 
    const [ids, setIds] = useState('');
-   const [nameGame, setNameGame] = useState(6);
+   const [nameGame, setNameGame] = useState(8);
    const [nameTeam, setNameTeam] = useState(0);
    const [namePlayer, setNamePlayer] = useState(0);
 
@@ -41,7 +41,7 @@ export const StatisticsPerGame = () => {
 
    useEffect(() => {
       getStatisticsPerPlayer();
-      getScore();
+      // getScore();
       
       setInterval(() => {
          getScore();
@@ -84,8 +84,6 @@ export const StatisticsPerGame = () => {
 
       ptT1 = viewScoreTeam1.data[0].pt;
       ptT2 = viewScoreTeam2.data[0].pt;
-
-      console.log(viewScoreTeam1.data);
 
       parametersTeam = {idCalendar: nameGame, pointsTeam1: ptT1, pointsTeam2: ptT2};
 
