@@ -61,13 +61,13 @@ export const Header = () => {
                               <li key={i}>
                                  <Link to={`/views/${reg.idTeam}`}>{reg.nameTeam}</Link>
                               </li>
-                              
                            )
                         }
                      </ul>
                   </li>
                   <li><Link to="/views/leaders">Estadisticas</Link></li>
                   <li><Link to="/views/rules">Reglas</Link></li>
+                  <li><link to="/be/views/admin">Back End</link></li>
                 </ul>
             </nav>
          </header>
