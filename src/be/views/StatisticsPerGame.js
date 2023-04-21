@@ -28,8 +28,7 @@ export const StatisticsPerGame = () => {
    const [ptTeam1, setPtTeam1] = useState([]);
    const [ptTeam2, setPtTeam2] = useState([]);
 
-   const [ids, setIds] = useState('');
-   const [nameGame, setNameGame] = useState(1);
+   const [nameGame, setNameGame] = useState();
    const [nameTeam, setNameTeam] = useState(0);
    const [namePlayer, setNamePlayer] = useState(0);
 
@@ -44,60 +43,51 @@ export const StatisticsPerGame = () => {
       getScore();
       
       setInterval(() => {
+         getStatisticsPerPlayer();
          getScore();
       }, 10000)
    }, []);
 
    const getStatisticsPerPlayer = async () => {
-      const res = await axios.get(`${url}calendar`);
-      
-      const tem1 = await axios(`${url}statisticsTeam1/${nameGame}/${res.data[nameGame-1].team1}`);
-      setTeam1(tem1.data);
-
-      const tem2 = await axios(`${url}statisticsTeam2/${nameGame}/${res.data[nameGame-1].team2}`);
-      setTeam2(tem2.data);
-
       const cal = await axios(`${url}filterCalendar`);
       setNameGameList(cal.data);
+      
+      const tem1 = await axios(`${url}statisticsTeam1/${cal.data[0].idCalendar}/${cal.data[0].team1}`);
+      setTeam1(tem1.data);
+
+      const tem2 = await axios(`${url}statisticsTeam2/${cal.data[0].idCalendar}/${cal.data[0].team2}`);
+      setTeam2(tem2.data);
 
       const tm = await axios(`${url}team`);
       setNameTeamList(tm.data);
 
       const pl = await axios(`${url}player`);
       setNamePlayerList(pl.data);
-
-      const viewScoreTeam1 = await axios(`${url}scoreTeam1/${nameGame}/${res.data[nameGame-1].team1}`);
-      setPtTeam1(viewScoreTeam1.data);
-
-      const viewScoreTeam2 = await axios(`${url}scoreTeam2/${nameGame}/${res.data[nameGame-1].team2}`);
-      setPtTeam2(viewScoreTeam2.data);
    }
    
    const getScore = async () => {
-      const res = await axios.get(`${url}calendar`);
+      const cal = await axios(`${url}filterCalendar`);
+      setNameGameList(cal.data);
       
-      const viewScoreTeam1 = await axios(`${url}scoreTeam1/${nameGame}/${res.data[nameGame-1].team1}`);
+      const viewScoreTeam1 = await axios(`${url}scoreTeam1/${cal.data[0].idCalendar}/${cal.data[0].team1}`);
       setPtTeam1(viewScoreTeam1.data);
 
-      const viewScoreTeam2 = await axios(`${url}scoreTeam2/${nameGame}/${res.data[nameGame-1].team2}`);
+      const viewScoreTeam2 = await axios(`${url}scoreTeam2/${cal.data[0].idCalendar}/${cal.data[0].team2}`);
       setPtTeam2(viewScoreTeam2.data);
 
       ptT1 = viewScoreTeam1.data[0].pt;
       ptT2 = viewScoreTeam2.data[0].pt;
 
-      parametersTeam = {idCalendar: nameGame, pointsTeam1: ptT1, pointsTeam2: ptT2};
+      parametersTeam = {idCalendar: cal.data[0].idCalendar, pointsTeam1: ptT1, pointsTeam2: ptT2};
 
-      fetch(`${url}updateCalendar/${nameGame}`, {
+      fetch(`${url}updateCalendar/${cal.data[0].idCalendar}`, {
          method: 'PUT',
          headers: {'Content-Type': 'application/json'},
          body: JSON.stringify(parametersTeam)
       }).then(res => res.text())
-      setNameGame(nameGame);
    }
 
    const openModal = (op) => {
-      setIds('');
-      setNameGame(0);
       setNameTeam(0);
       setNamePlayer(0);
       setOperation(op);
@@ -114,24 +104,12 @@ export const StatisticsPerGame = () => {
          setTitle('Registrar Jugador Al Partido');
          setBtnSubmit('Registrar');
       }
-      else if(op === 2) {
-         const fund_new_client = document.querySelector(".selectGame");
-         fund_new_client.classList.remove('hide_font');
-
-         setTimeout(() => {
-            const fadeUp = document.querySelector('.card2');
-            fadeUp.classList.add('fade-Up');
-         }, 100);
-
-         setTitle('Seleccionar Partidos Que Jugaran');
-         setBtnSubmit('Seleccionar');
-      }
    }
 
    const validate = () => {
-      if(nameGame === 0) show_alerta('Escribe el nombre del partido', 'warning')
-      else if(nameTeam === 0) show_alerta('Escribe el nombre del equipo', 'warning')
-      else if(namePlayer === 0) show_alerta('Escribe el nombre del jugador', 'warning')
+      if(nameGame === "0") show_alerta('Seleccione el partido', 'warning')
+      else if(nameTeam === 0) show_alerta('Seleccione el equipo', 'warning')
+      else if(namePlayer === 0) show_alerta('Seleccione el jugador', 'warning')
       else {
          if(operation === 1) {
             parameters = {game: nameGame, team: nameTeam, player: namePlayer};
@@ -159,7 +137,7 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const deleteCustomer = (id) => {
+   const deleteCustomer = (idPlayer, idGame) => {
       const MySwal = withReactContent(Swal);
 
       MySwal.fire({
@@ -172,7 +150,7 @@ export const StatisticsPerGame = () => {
                method: 'DELETE'
             }
       
-            fetch('http://localhost:9000/api/deleteStatisticsPerPlayer/' + id, requestInit)
+            fetch('http://localhost:9000/api/deleteStatisticsPerPlayer/' + idPlayer, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
@@ -629,8 +607,6 @@ export const StatisticsPerGame = () => {
          <div className="container-table">
             <div className='header'>
                <button name="newClient" className="btn-light btn-register" onClick={() => openModal(1)}><span><FontAwesomeIcon icon={faCirclePlus} /></span></button>
-            
-               <button name="selectGame" className="btn-light btn-light-secondary" onClick={() => openModal(2)}><span><FontAwesomeIcon icon={faCirclePlus} /></span></button>
             </div>
 
             <h1>EQUIPO 1</h1>
@@ -689,7 +665,7 @@ export const StatisticsPerGame = () => {
                                  <button type="button" className="btn btn-info" onClick={()=> opFauTeam1(index, reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button onClick={() => deleteCustomer(reg.idStatistic)} className="btn btn-delete">Eliminar</button>
+                                 <button onClick={() => deleteCustomer(reg.idStatistic, reg.game)} className="btn btn-delete">Eliminar</button>
                               </td>
                            </tr>
                         ))
@@ -763,7 +739,7 @@ export const StatisticsPerGame = () => {
             </div>
 
             {/* REGISTRAR JUGADOR AL JUEGO  */}
-            <div className="container-form hide">
+            <div className="container-form hide hide_font">
                <div className="card fadeUp">
                   <div className="card-header">
                      <span className='title'>{title}</span>
@@ -810,7 +786,7 @@ export const StatisticsPerGame = () => {
             </div>
 
             {/* SELECCIONAR PARTIDO  */}
-            <div className="selectGame hide_font">
+            <div className="selectGame hide hide_font">
                <div className="card card2 fadeUp">
                   <div className="card-header">
                      <span className='title'>{title}</span>

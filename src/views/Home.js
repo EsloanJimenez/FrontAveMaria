@@ -37,13 +37,6 @@ const Home = () => {
          if (distanciaBottom <= sizeVentana) fadeDown[b].classList.add('fade-Down');
          else fadeDown[b].classList.remove('fade-Down');
       }
-      
-      // for(let l = 0; l < fadeLeft.length; l++) {
-      //    let distanciaLeft = fadeLeft[l].getBoundingClientRect().top;
-   
-      //    if (distanciaLeft <= sizeVentana) fadeLeft[l].classList.add('fade-Left');
-      //    else fadeLeft[l].classList.remove('fade-Left');
-      // }
    })
 
    const url = 'http://localhost:9000/api/'
