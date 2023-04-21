@@ -7,7 +7,7 @@ import { Rankings } from "../components/Rankings";
 import { Teams } from "../components/Teams";
 
 import '../css/home.css';
-import '../css/animaciones.css'
+import '../css/animaciones.css';
 
 const Home = () => {
    const fadeUp = document.querySelectorAll('.fadeUp');
