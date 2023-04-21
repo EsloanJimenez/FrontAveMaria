@@ -6,8 +6,7 @@ import '../../css/main.css'
 import '../../css/style.css'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faLocationDot, faAngleDown, faBars} from '@fortawesome/free-solid-svg-icons'
-import {faWhatsapp} from '@fortawesome/free-brands-svg-icons'
+import {faAngleDown, faBars} from '@fortawesome/free-solid-svg-icons'
 
 export const HeaderControler = () => {
    const [teamList, setTeamList] = useState([]);
@@ -41,7 +40,7 @@ export const HeaderControler = () => {
    }, [])
 
    const getTeamList = async () => {
-      const tl = await axios(`http://localhost:9000/api/team`);
+      const tl = await axios(`https://apiavemaria.onrender.com/api/team`);
       setTeamList(tl.data);
    }
 

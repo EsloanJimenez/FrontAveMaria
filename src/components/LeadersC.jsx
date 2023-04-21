@@ -51,7 +51,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                         leaderPoints.map((reg, i) =>
                            <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
                               <td>{i + 1}</td>
-                              <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
+                              <td><img src={`https://apiavemaria.onrender.com/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.pt}</td>
@@ -82,7 +82,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                         leaderAssists.map((reg, i) =>
                            <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
                               <td>{i + 1}</td>
-                              <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
+                              <td><img src={`https://apiavemaria.onrender.com/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.ast}</td>
@@ -113,7 +113,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                         leaderRebounds.map((reg, i) =>
                            <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
                               <td>{i + 1}</td>
-                              <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
+                              <td><img src={`https://apiavemaria.onrender.com/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.rbt}</td>
@@ -144,7 +144,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                         leaderStoppers.map((reg, i) =>
                            <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
                               <td>{i + 1}</td>
-                              <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
+                              <td><img src={`https://apiavemaria.onrender.com/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.st}</td>
@@ -175,7 +175,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                         leaderRobberies.map((reg, i) =>
                            <tr key={i} onClick={() => openModal(reg.player, reg.fullName, reg.iconTeam, reg.photo)}>
                               <td>{i + 1}</td>
-                              <td><img src={`http://localhost:9000/${reg.photo}`} /></td>
+                              <td><img src={`https://apiavemaria.onrender.com/${reg.photo}`} /></td>
                               <td>{reg.fullName}</td>
                               <td>{reg.nameTeam}</td>
                               <td>{reg.rbo}</td>
@@ -200,8 +200,8 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                <div className="card-body">
                   <div className="mb-3">
                      <div className="mb-2">
-                        <img src={`http://localhost:9000/${photoPlayer}`} alt="imagen rota" />
-                        <img src={`http://localhost:9000/${iconTeam}`} alt="imagen rota" />
+                        <img src={`https://apiavemaria.onrender.com/${photoPlayer}`} alt="imagen rota" />
+                        <img src={`https://apiavemaria.onrender.com/${iconTeam}`} alt="imagen rota" />
                      </div>
 
                      <table>

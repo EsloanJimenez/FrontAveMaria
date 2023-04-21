@@ -21,7 +21,7 @@ export const Team3 = () => {
    }, [])
 
    const getPlayer = async () => {
-      const py = await axios(`http://localhost:9000/api/viewTeam1/3`);
+      const py = await axios(`https://apiavemaria.onrender.com/api/viewTeam1/3`);
       setPlayer(py.data);
    }
 

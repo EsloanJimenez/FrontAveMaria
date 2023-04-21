@@ -11,7 +11,7 @@ export const Teams = () => {
    }, [])
 
    const getTeam = async () => {
-      const te = await axios('http://localhost:9000/api/team');
+      const te = await axios('https://apiavemaria.onrender.com/api/team');
       setTeam(te.data);
    }
 
@@ -21,8 +21,8 @@ export const Teams = () => {
             {
                team.map((reg, i) =>
                   <article key={i} className='fadeDown'>
-                     <img width="300px" height="250px" src={'http://localhost:9000/' + reg.photoTeam} />
-                     <img width="50px" src={'http://localhost:9000/' + reg.iconTeam} />
+                     <img width="300px" height="250px" src={'https://apiavemaria.onrender.com/' + reg.photoTeam} />
+                     <img width="50px" src={'https://apiavemaria.onrender.com/' + reg.iconTeam} />
                   </article>
                )
             }

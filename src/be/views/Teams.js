@@ -16,8 +16,8 @@ import '../css/buttons.css'
 export const Teams = () => {
    let parameters;
    
-   const url = 'http://localhost:9000/api/team';
-   const urlOp = 'http://localhost:9000/api/updateTeam/';
+   const url = 'https://apiavemaria.onrender.com/api/team';
+   const urlOp = 'https://apiavemaria.onrender.com/api/updateTeam/';
 
    const [teams, setTeams] = useState([]);
    const [ids, setIds] = useState('');
@@ -147,7 +147,7 @@ export const Teams = () => {
                method: 'DELETE'
             }
       
-            fetch('http://localhost:9000/api/deleteTeam/' + id, requestInit)
+            fetch('https://apiavemaria.onrender.com/api/deleteTeam/' + id, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
@@ -247,8 +247,8 @@ export const Teams = () => {
                            <tr key={reg.idTeam}>
                               <td>{reg.idTeam}</td>
                               <td>{reg.nameTeam}</td>
-                              <td>{<img src={`http://localhost:9000/${reg.photoTeam}` } alt="imagen rota" />}</td>
-                              <td>{<img src={`http://localhost:9000/${reg.iconTeam}` } alt="imagen rota" />}</td>
+                              <td>{<img src={`https://apiavemaria.onrender.com/${reg.photoTeam}` } alt="imagen rota" />}</td>
+                              <td>{<img src={`https://apiavemaria.onrender.com/${reg.iconTeam}` } alt="imagen rota" />}</td>
                               <td>
                                  <button type="button" className="btn btn-delete" onClick={()=> gameWon(index, reg, false)}>-</button>
                                  {reg.gameWon}
@@ -279,7 +279,7 @@ export const Teams = () => {
                      <button className='closeClient' onClick={closeClient}>X</button>
                   </div>
                   <div className="card-body">
-                     <form action="http://localhost:9000/api/team" method="post" enctype="multipart/form-data">
+                     <form action="https://apiavemaria.onrender.com/api/team" method="post" enctype="multipart/form-data">
                         <div className="mb-3">
                            <label for="name" className="form-label">Nombre</label>
                            <input type="text" className="form-control" id="name" name="name" value={name} onChange={(e) => setName(e.target.value)} />

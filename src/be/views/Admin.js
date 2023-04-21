@@ -15,7 +15,7 @@ import '../css/buttons.css'
 import '../../css/animaciones.css'
 
 export const Admin = () => {
-   const url = 'http://localhost:9000/api/admin'
+   const url = 'https://apiavemaria.onrender.com/api/admin'
 
    const [admins, setAdmins] = useState([]);
    const [ids, setIds] = useState('');
@@ -113,7 +113,7 @@ export const Admin = () => {
                   body: JSON.stringify(parameters)
                }
          
-               fetch('http://localhost:9000/api/updateAdmin/' + ids, requestInit)
+               fetch('https://apiavemaria.onrender.com/api/updateAdmin/' + ids, requestInit)
                .then(res => res.text())
                .then(res => {
                
@@ -143,7 +143,7 @@ export const Admin = () => {
                method: 'DELETE'
             }
       
-            fetch('http://localhost:9000/api/deleteAdmin/' + id, requestInit)
+            fetch('https://apiavemaria.onrender.com/api/deleteAdmin/' + id, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 

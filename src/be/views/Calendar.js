@@ -16,8 +16,8 @@ import '../css/buttons.css'
 export const Calendar = () => {
    let parameters;
 
-   const url = 'http://localhost:9000/api/calendar';
-   const urlOp = 'http://localhost:9000/api/updateCalendar/';
+   const url = 'https://apiavemaria.onrender.com/api/calendar';
+   const urlOp = 'https://apiavemaria.onrender.com/api/updateCalendar/';
 
    const [calendar, setCalendar] = useState([]);
    const [ids, setIds] = useState('');
@@ -41,7 +41,7 @@ export const Calendar = () => {
       const res = await axios.get(url);
       setCalendar(res.data);
       
-      const reg = await axios.get('http://localhost:9000/api/team');
+      const reg = await axios.get('https://apiavemaria.onrender.com/api/team');
       setTeamList(reg.data);
    }
 
@@ -125,7 +125,7 @@ export const Calendar = () => {
                body: JSON.stringify(parameters)
             }
       
-            fetch('http://localhost:9000/api/updateCalendar/' + ids, requestInit)
+            fetch('https://apiavemaria.onrender.com/api/updateCalendar/' + ids, requestInit)
             .then(res => res.text())
             .then(res => {
                let msj = 'Jugador Actualizado';
@@ -160,7 +160,7 @@ export const Calendar = () => {
                method: 'DELETE'
             }
       
-            fetch('http://localhost:9000/api/deleteCalendar/' + id, requestInit)
+            fetch('https://apiavemaria.onrender.com/api/deleteCalendar/' + id, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
@@ -233,10 +233,10 @@ export const Calendar = () => {
                               <td>{reg.idCalendar}</td>
                               <td>{reg.nameGame}</td>
                               <td>{reg.team1}</td>
-                              <td>{<img src={`http://localhost:9000/${reg.photoTeam1}` } alt="imagen rota" />}</td>
+                              <td>{<img src={`https://apiavemaria.onrender.com/${reg.photoTeam1}` } alt="imagen rota" />}</td>
                               <td>{reg.date}</td>
                               <td>{reg.team2}</td>
-                              <td>{<img src={`http://localhost:9000/${reg.photoTeam2}` } alt="imagen rota" />}</td>
+                              <td>{<img src={`https://apiavemaria.onrender.com/${reg.photoTeam2}` } alt="imagen rota" />}</td>
                               <td>
                                  <button type="button" className="btn btn-delete" onClick={()=> gameStatus(index, reg, false)}>-</button>
                                  {reg.status}

@@ -12,7 +12,7 @@ export const Player = ({ player }) => {
             player.map((reg) =>
                <article>
                   <aside>
-                     <img src={`http://localhost:9000/${reg.photo}`} alt="imagen rota" />
+                     <img src={`https://apiavemaria.onrender.com/${reg.photo}`} alt="imagen rota" />
                      <figcaption>
                         <p>{reg.fullName}</p>
                         <p>{reg.jacket}</p>

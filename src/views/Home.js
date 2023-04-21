@@ -46,7 +46,7 @@ const Home = () => {
       // }
    })
 
-   const url = 'http://localhost:9000/api/'
+   const url = 'https://apiavemaria.onrender.com/api/'
 
    const [calendar, setCalendar] = useState([]);
    const [leagueTeam, setLeagueTeam] = useState([]);

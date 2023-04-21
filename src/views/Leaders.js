@@ -7,7 +7,7 @@ import { LeadersC } from "../components/LeadersC";
 import '../css/home.css';
 
 const Leaders = () => {
-   const url = 'http://localhost:9000/api/'
+   const url = 'https://apiavemaria.onrender.com/api/'
 
    const [leaderPoints, setLeaderPoints] = useState([]);
    const [leaderAssists, setLeaderAssists] = useState([]);
