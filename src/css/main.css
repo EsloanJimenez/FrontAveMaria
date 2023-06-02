@@ -54,7 +54,9 @@ li a {
 .view {
    margin-left: 0;
 }
-
+.invisible {
+   opacity: 0;
+}
 @media (min-width: 1024px) {
    .navBar {
       display: none;

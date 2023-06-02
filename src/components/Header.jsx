@@ -67,7 +67,7 @@ export const Header = () => {
                   </li>
                   <li><Link to="/views/leaders">Estadisticas</Link></li>
                   <li><Link to="/views/rules">Reglas</Link></li>
-                  <li><Link to="/be/views/admin">Back End</Link></li>
+                  <li className='invisible'><Link to="/be/views/admin">Back End</Link></li>
                 </ul>
             </nav>
          </header>
