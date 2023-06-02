@@ -48,7 +48,7 @@ export const Header = () => {
       <div id="home">
           {/* ----- HEADER ----- */}
          <header>
-            <span className="navBar" id="btnMain"><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
+            <span className="navBar" id="btnMain"><FontAwesomeIcon icon={faBars} /><span>Torneo Salome Ureña 2023</span></span> 
             <nav className="mainNav">
                <ul className='main' id='main'>
                   <li><Link to="/">Inicio</Link></li>
