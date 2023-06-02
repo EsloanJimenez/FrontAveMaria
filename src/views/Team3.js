@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 
 import {Header} from "../components/Header";
-import { EffectCurva } from "../components/EffectCurva";
 
 import '../css/teams.css';
 
@@ -34,8 +33,6 @@ export const Team3 = () => {
          </div>
 
          <Header />
-
-         <EffectCurva />
 
          <Player
             player = {player}
