@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 import axios from 'axios';
 
 import {Header} from "../components/Header";
-import { EffectCurva } from "../components/EffectCurva";
 
 import '../css/teams.css';
 
-import teamBlue from '../images/teams/blue.jpeg';
+import teamOrange from '../images/teams/orange.jpeg';
 import { Player } from "../components/Player";
 
 export const Team4 = () => {
@@ -29,13 +28,11 @@ export const Team4 = () => {
       <>
          <div className="team">
             <div className="BannerHome">
-               <div id="court"><img src={teamBlue} /></div>
+               <div id="court"><img src={teamOrange} /></div>
             </div>
          </div>
 
          <Header />
-
-         <EffectCurva />
 
          <Player
             player = {player}
