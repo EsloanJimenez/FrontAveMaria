@@ -29,7 +29,7 @@ table {
    width: 100%;
 }
 .table {
-   height: 95vh;
+   height: 85vh;
    margin-top: 20px;
    overflow: auto;
    border-radius: 10px;
@@ -42,7 +42,7 @@ table {
    border-radius: 5px;
 }
 .statist {
-   height: 600px;
+   height: 1000px;
 }
 table thead tr {
    background-color: #0d6efd;
