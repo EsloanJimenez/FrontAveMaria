@@ -65,11 +65,11 @@ export const Calendar = () => {
       setOperation(op);
 
       if(op === 1) {
-         setTitle('Registrar Jugador');
+         setTitle('Registrar Calendario');
          setBtnSubmit('Registrar');
       }
       else if(op === 2) {
-         setTitle('Editar Jugador');
+         setTitle('Editar Calendario');
          setBtnSubmit('Actualizar');
          setIds(id);
          setNameGame(nameGame);
@@ -100,7 +100,7 @@ export const Calendar = () => {
             fetch(url, requestInit)
             .then(res => res.text())
             .then(res => {
-               let msj = 'Jugador Registrado';
+               let msj = 'Calendario Registrado';
             
                show_alerta(msj, 'success');
    
@@ -128,7 +128,7 @@ export const Calendar = () => {
             fetch('http://localhost:9000/api/updateCalendar/' + ids, requestInit)
             .then(res => res.text())
             .then(res => {
-               let msj = 'Jugador Actualizado';
+               let msj = 'Calendario Actualizado';
             
                show_alerta(msj, 'success');
 
