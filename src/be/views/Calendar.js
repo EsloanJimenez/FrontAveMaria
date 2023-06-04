@@ -65,11 +65,11 @@ export const Calendar = () => {
       setOperation(op);
 
       if(op === 1) {
-         setTitle('Registrar Jugador');
+         setTitle('Registrar Calendario');
          setBtnSubmit('Registrar');
       }
       else if(op === 2) {
-         setTitle('Editar Jugador');
+         setTitle('Editar Calendario');
          setBtnSubmit('Actualizar');
          setIds(id);
          setNameGame(nameGame);
@@ -117,7 +117,7 @@ export const Calendar = () => {
             })
 
          } else if(operation === 2) {
-            parameters = {idCalendar:ids, nameGame: nameGame.trim(), gameDate:gameDate.trim(), team1:team1.trim(),team2:team2.trim(), photoTeam1: photoTeam1.trim(), photoTeam2: photoTeam2.trim(),status: status};
+            parameters = {idCalendar:ids, nameGame: nameGame, gameDate:gameDate, team1:team1,team2:team2, photoTeam1: photoTeam1, photoTeam2: photoTeam2,status: status};
 
             const requestInit = {
                method: 'PUT',
@@ -229,7 +229,7 @@ export const Calendar = () => {
                   <tbody id='listaCiudades'>
                      {
                         calendar.map((reg, index) => (
-                           <tr key={reg.idCalendar}>
+                           <tr key={index}>
                               <td>{reg.idCalendar}</td>
                               <td>{reg.nameGame}</td>
                               <td>{reg.team1}</td>
