@@ -623,7 +623,7 @@ export const StatisticsPerGame = () => {
                <button name="selectGame" className="btn-light btn-light-secondary" onClick={() => openModal(2)}><span><FontAwesomeIcon icon={faCirclePlus} /></span></button>
             </div>
 
-            <h1>EQUIPO A {ptTeam1.nameTeam}</h1>
+            <h1>EQUIPO A ({ptTeam1[0].nameTeam})</h1>
       
             <div className='table statist'>
                <table>
@@ -688,7 +688,7 @@ export const StatisticsPerGame = () => {
                </table>
             </div>
 
-            <h1>EQUIPO B</h1>
+            <h1>EQUIPO B ({ptTeam2[0].nameTeam})</h1>
       
             <div className='table statist'>
                <table>
