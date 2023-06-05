@@ -8,6 +8,7 @@ import { Teams } from "../components/Teams";
 
 import '../css/home.css';
 import '../css/animaciones.css';
+import { Footer } from "../components/Footer";
 
 const Home = () => {
    const fadeUp = document.querySelectorAll('.fadeUp');
@@ -43,6 +44,7 @@ const Home = () => {
 
    const [calendar, setCalendar] = useState([]);
    const [leagueTeam, setLeagueTeam] = useState([]);
+   const [visitCounter, setVisitCounter] = useState([]);
 
    useEffect(() => {
       getCalendar();
@@ -58,6 +60,9 @@ const Home = () => {
 
       const le = await axios(`${url}leagueTeam`);
       setLeagueTeam(le.data);
+
+      const vc = await axios(`${url}countVisit`);
+      console.log(vc.data)
    }
 
    return(
@@ -77,6 +82,8 @@ const Home = () => {
          />
 
          <Teams />
+
+         <Footer />
       </>
    )
 }
