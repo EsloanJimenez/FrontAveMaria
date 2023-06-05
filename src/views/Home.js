@@ -44,7 +44,8 @@ const Home = () => {
 
    const [calendar, setCalendar] = useState([]);
    const [leagueTeam, setLeagueTeam] = useState([]);
-   const [visitCounter, setVisitCounter] = useState([]);
+   const [visitCounter, setVisitCounter] = useState();
+   const [viewCounter, setViewCounter] = useState();
 
    useEffect(() => {
       getCalendar();
@@ -62,7 +63,8 @@ const Home = () => {
       setLeagueTeam(le.data);
 
       const vc = await axios(`${url}countVisit`);
-      console.log(vc.data)
+      setVisitCounter(vc.data[0].visit)
+      setViewCounter(vc.data[0].onView)
    }
 
    return(
@@ -83,7 +85,10 @@ const Home = () => {
 
          <Teams />
 
-         <Footer />
+         <Footer
+            visitCounter={visitCounter}
+            viewCounter={viewCounter}
+         />
       </>
    )
 }

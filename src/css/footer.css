@@ -7,9 +7,13 @@
    align-items: center;
 }
 .footer ul li {
+   padding: 10px 0;
    list-style: none;
    color: #fff;
 }
 .footer ul li a {
    display: inline-block;
+}
+.footer ul li span {
+   padding-left: 10px;
 }
