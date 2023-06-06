@@ -23,7 +23,7 @@ export const Team2 = () => {
       const py = await axios(`http://localhost:9000/api/viewTeam1/2`);
       setPlayer(py.data);
    }
-
+   
    return(
       <>
          <div className="team">
