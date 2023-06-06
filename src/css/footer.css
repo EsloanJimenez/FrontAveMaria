@@ -12,8 +12,10 @@
    color: #fff;
 }
 .footer ul li a {
+   padding: 0;
+   padding-left: 15px;
    display: inline-block;
 }
 .footer ul li span {
-   padding-left: 10px;
+   padding-left: 15px;
 }
