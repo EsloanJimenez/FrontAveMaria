@@ -37,6 +37,9 @@
 }
 
 /* ----- MODAL ----- */
+.card {
+   position: fixed;
+}
 .card-body .mb-3 .mb-2 {
    display: flex;
    justify-content: space-between;
