@@ -42,15 +42,14 @@ const Home = () => {
 
    const url = 'http://localhost:9000/api/';
 
-
-
    const [calendar, setCalendar] = useState([]);
    const [leagueTeam, setLeagueTeam] = useState([]);
-   const [visitCounter, setVisitCounter] = useState([]);
-   // const [viewConuter, setViewCounter] = useState([]);
+   const [visitCounter, setVisitCounter] = useState();
+   const [viewConuter, setViewCounter] = useState();
 
    useEffect(() => {
       getCalendar();
+      getCounterVisit();
       
       setInterval(() => {
          getCalendar();
@@ -63,12 +62,23 @@ const Home = () => {
 
       const le = await axios(`${url}leagueTeam`);
       setLeagueTeam(le.data);
+   }
+   
+   const getCounterVisit = async () => {
+      const vc = await axios(`${url}countVisit`);
+      setVisitCounter(vc.data[0].visit);
+      setViewCounter(vc.data[0].onView);
 
-      const vc = await axios(`${url}visitCounter`);
-      setVisitCounter(vc.data);
+      setCounterVisit(vc.data[0].visit);
    }
 
-   console.log(visitCounter);
+   const setCounterVisit = (vt) => {
+      axios.put(`${url}updateVisitCounter/1`, {
+         idVisitConunter: 1,
+         visit: vt+1,
+         onView: 5
+      })
+   }
 
    return(
       <>
@@ -90,6 +100,7 @@ const Home = () => {
 
          <Footer 
             visitCounter = {visitCounter}
+            viewConuter = {viewConuter}
          />
       </>
    )

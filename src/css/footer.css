@@ -7,9 +7,15 @@
    align-items: center;
 }
 .footer ul li {
+   padding: 10px;
    list-style: none;
    color: #fff;
 }
 .footer ul li a {
+   padding: 0;
+   padding-left: 15px;
    display: inline-block;
+}
+.footer ul li span {
+   padding-left: 15px;
 }
