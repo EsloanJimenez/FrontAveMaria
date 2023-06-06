@@ -5,10 +5,11 @@ import {Header} from "../components/Header";
 import { Calendar } from "../components/Calendar";
 import { Rankings } from "../components/Rankings";
 import { Teams } from "../components/Teams";
+import { Footer } from "../components/Footer";
 
 import '../css/home.css';
 import '../css/animaciones.css';
-import { Footer } from "../components/Footer";
+
 
 const Home = () => {
    const fadeUp = document.querySelectorAll('.fadeUp');
@@ -65,7 +66,7 @@ const Home = () => {
    }
    
    const getCounterVisit = async () => {
-      const vc = await axios(`${url}countVisit`);
+      const vc = await axios(`${url}countVisit/1`);
       setVisitCounter(vc.data[0].visit);
       setViewCounter(vc.data[0].onView);
 
@@ -73,10 +74,12 @@ const Home = () => {
    }
 
    const setCounterVisit = (vt) => {
+      const randon = Math.trunc(Math.random()*99);
+
       axios.put(`${url}updateVisitCounter/1`, {
          idVisitConunter: 1,
          visit: vt+1,
-         onView: 5
+         onView: randon
       })
    }
 
