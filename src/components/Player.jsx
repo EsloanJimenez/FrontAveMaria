@@ -9,14 +9,12 @@ export const Player = ({ player }) => {
    return (
       <section className='player'>
          {
-            player.map((reg) =>
-               <article>
+            player.map((reg, i) =>
+               <article key={i}>
                   <aside>
+                     <p>{reg.fullName}</p>
+                     <p>{reg.jacket}</p>
                      <img src={`https://apiavemaria.onrender.com/${reg.photo}`} alt="imagen rota" />
-                     <figcaption>
-                        <p>{reg.fullName}</p>
-                        <p>{reg.jacket}</p>
-                     </figcaption>
                   </aside>
                   <table>
                      <tr>
