@@ -54,7 +54,7 @@ const Leaders = () => {
    }
 
    const setCounterVisit = (vt) => {
-      const randon = Math.trunc(Math.random() * 99);
+      const randon = Math.trunc(Math.random() * 9);
 
       axios.put(`${url}updateVisitCounter/6`, {
          idVisitConunter: 6,

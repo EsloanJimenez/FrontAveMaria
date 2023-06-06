@@ -74,7 +74,7 @@ const Home = () => {
    }
 
    const setCounterVisit = (vt) => {
-      const randon = Math.trunc(Math.random()*99);
+      const randon = Math.trunc(Math.random()*9);
 
       axios.put(`${url}updateVisitCounter/1`, {
          idVisitConunter: 1,

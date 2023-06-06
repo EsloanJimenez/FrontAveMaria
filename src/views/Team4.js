@@ -39,7 +39,7 @@ export const Team4 = () => {
    }
 
    const setCounterVisit = (vt) => {
-      const randon = Math.trunc(Math.random() * 99);
+      const randon = Math.trunc(Math.random() * 9);
 
       axios.put(`${url}updateVisitCounter/5`, {
          idVisitConunter: 5,
