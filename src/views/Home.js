@@ -100,7 +100,7 @@ const Home = () => {
 
          <Footer
             visitCounter={visitCounter}
-            viewCounter={viewCounter}
+            viewCounter={viewConuter}
          />
       </>
    )
