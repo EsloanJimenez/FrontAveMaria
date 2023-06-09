@@ -100,7 +100,7 @@ export const Calendar = () => {
             fetch(url, requestInit)
             .then(res => res.text())
             .then(res => {
-               let msj = 'Jugador Registrado';
+               let msj = 'Calendario Registrado';
             
                show_alerta(msj, 'success');
    
@@ -128,7 +128,7 @@ export const Calendar = () => {
             fetch('https://apiavemaria.onrender.com/api/updateCalendar/' + ids, requestInit)
             .then(res => res.text())
             .then(res => {
-               let msj = 'Jugador Actualizado';
+               let msj = 'Calendario Actualizado';
             
                show_alerta(msj, 'success');
 
