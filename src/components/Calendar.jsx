@@ -10,7 +10,7 @@ export const Calendar = ({calendar}) => {
                      <h3>{reg.nameGame}</h3>
                      <div>
                         <h4>{reg.date}</h4>
-                        <h4>{reg.room > 5 ? '' : reg.time}</h4>
+                        <h4>{reg.room > 5 ? '' : reg.room < 1 ? '' : reg.time}</h4>
                         <p>
                            <span>{<img width="100px" src={`https://apiavemaria.onrender.com/${reg.photoTeam1}` } alt="imagen rota" />}</span>
                            <span>{reg.pointsTeam1}</span>
