@@ -66,7 +66,7 @@ const Home = () => {
    
    const getCounterVisit = async () => {
       const vc = await axios(`${url}countVisitHome`);
-      setVisitCounter(vc.data[0].visvisitHomeit);
+      setVisitCounter(vc.data[0].visitHome);
 
       setCounterVisit();
    }
