@@ -202,6 +202,36 @@ export const Calendar = () => {
       }
    }
 
+   const gameRoom = (index, player, op) => {
+      if(op) {
+         player.room +=1;
+         const newArr = [...calendar];
+         newArr[index] = player;
+         setCalendar(newArr);
+
+         parameters = {idCalendar: player.idCalendar, room: player.room};
+               
+         fetch(urlOp + player.idCalendar, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(parameters)
+         }).then(res => res.text())
+      } else {
+         player.room -=1;
+         const newArr = [...calendar];
+         newArr[index] = player;
+         setCalendar(newArr);
+         
+         parameters = {idCalendar: player.idCalendar, room: player.room};
+               
+         fetch(urlOp + player.idCalendar, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(parameters)
+         }).then(res => res.text())
+      }
+   }
+
    return(
       <div>
          <HeaderControler />
@@ -220,6 +250,8 @@ export const Calendar = () => {
                         <th>EQUIPO 1</th>
                         <th>PHOTO EQUIPO 1</th>
                         <th>FECHA</th>
+                        <th>CUARTO</th>
+                        <th>TIEMPO</th>
                         <th>EQUIPO 2</th>
                         <th>PHOTO EQUIPO 2</th>
                         <th>STATUS</th>
@@ -235,6 +267,12 @@ export const Calendar = () => {
                               <td>{reg.team1}</td>
                               <td>{<img src={`https://apiavemaria.onrender.com/${reg.photoTeam1}` } alt="imagen rota" />}</td>
                               <td>{reg.date}</td>
+                              <td>
+                                 <button type="button" className="btn btn-delete" onClick={()=> gameRoom(index, reg, false)}>-</button>
+                                 {reg.room}
+                                 <button type="button" className="btn btn-info" onClick={()=> gameRoom(index, reg, true)}>+</button>
+                              </td>
+                              <td>{reg.time}</td>
                               <td>{reg.team2}</td>
                               <td>{<img src={`https://apiavemaria.onrender.com/${reg.photoTeam2}` } alt="imagen rota" />}</td>
                               <td>
