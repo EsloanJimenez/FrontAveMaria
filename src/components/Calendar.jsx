@@ -13,7 +13,7 @@ export const Calendar = ({calendar}) => {
                         <p>
                            <span>{<img width="100px" src={`https://apiavemaria.onrender.com/${reg.photoTeam1}` } alt="imagen rota" />}</span>
                            <span>{reg.pointsTeam1}</span>
-                           <span>Vs</span>
+                           <span>{reg.room == 6 ? 'FINAL' : reg.room}</span>
                            <span>{reg.pointsTeam2}</span>
                            <span>{<img width="100px" src={`https://apiavemaria.onrender.com/${reg.photoTeam2}` } alt="imagen rota" />}</span>
                         </p>
