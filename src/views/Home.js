@@ -46,7 +46,6 @@ const Home = () => {
    const [calendar, setCalendar] = useState([]);
    const [leagueTeam, setLeagueTeam] = useState([]);
    const [visitCounter, setVisitCounter] = useState();
-   const [viewConuter, setViewCounter] = useState();
 
    useEffect(() => {
       getCalendar();
@@ -66,20 +65,15 @@ const Home = () => {
    }
    
    const getCounterVisit = async () => {
-      const vc = await axios(`${url}countVisit/1`);
-      setVisitCounter(vc.data[0].visit);
-      setViewCounter(vc.data[0].onView);
+      const vc = await axios(`${url}countVisitHome`);
+      setVisitCounter(vc.data[0].visvisitHomeit);
 
-      setCounterVisit(vc.data[0].visit);
+      setCounterVisit();
    }
 
-   const setCounterVisit = (vt) => {
-      const randon = Math.trunc(Math.random()*9);
-
-      axios.put(`${url}updateVisitCounter/1`, {
-         idVisitConunter: 1,
-         visit: vt+1,
-         onView: randon
+   const setCounterVisit = () => {
+      axios.post(`${url}countVisitHome`, {
+         page: 'Home'
       })
    }
 
@@ -103,7 +97,6 @@ const Home = () => {
 
          <Footer
             visitCounter={visitCounter}
-            viewCounter={viewConuter}
          />
       </>
    )
