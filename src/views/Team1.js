@@ -14,7 +14,6 @@ export const Team1 = () => {
 
    const [player, setPlayer] = useState([]);
    const [visitCounter, setVisitCounter] = useState();
-   const [viewConuter, setViewCounter] = useState();
 
    useEffect(() => {
       getPlayer();
@@ -31,20 +30,15 @@ export const Team1 = () => {
    }
 
    const getCounterVisit = async () => {
-      const vc = await axios(`${url}countVisit/2`);
-      setVisitCounter(vc.data[0].visit);
-      setViewCounter(vc.data[0].onView);
+      const vc = await axios(`${url}countVisitTeam1`);
+      setVisitCounter(vc.data[0].visitTeam1);
 
-      setCounterVisit(vc.data[0].visit);
+      setCounterVisit();
    }
 
-   const setCounterVisit = (vt) => {
-      const randon = Math.trunc(Math.random() * 9);
-
-      axios.put(`${url}updateVisitCounter/2`, {
-         idVisitConunter: 2,
-         visit: vt + 1,
-         onView: randon
+   const setCounterVisit = () => {
+      axios.post(`${url}countVisitTeam1`, {
+         page: 'Los Cerros'
       })
    }
 
@@ -64,7 +58,6 @@ export const Team1 = () => {
 
          <Footer
             visitCounter={visitCounter}
-            viewCounter={viewConuter}
          />
       </>
    )
