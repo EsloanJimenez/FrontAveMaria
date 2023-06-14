@@ -6,8 +6,7 @@ import '../../css/main.css'
 import '../../css/style.css'
 
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faLocationDot, faAngleDown, faBars} from '@fortawesome/free-solid-svg-icons'
-import {faWhatsapp} from '@fortawesome/free-brands-svg-icons'
+import { faAngleDown, faBars} from '@fortawesome/free-solid-svg-icons'
 
 export const HeaderControler = () => {
    const [teamList, setTeamList] = useState([]);
@@ -74,6 +73,7 @@ export const HeaderControler = () => {
                         <li><Link to="/be/views/teams">Equipos</Link></li>
                         <li><Link to="/be/views/players">Jugadores</Link></li>
                         <li><Link to="/be/views/calendar">Calendario</Link></li>
+                        <li><Link to="/be/views/calendarPlayOff">Play-Off</Link></li>
                         <li><Link to="/be/views/statisticsPerGame">Estadisticas Por Juegos</Link></li>
                      </ul>
                   </li>

@@ -4,7 +4,8 @@
    background-size: cover;
    background-attachment: fixed;
    display: flex;
-   justify-content: center;
+   flex-direction: column;
+   justify-content: space-around;
    align-items: center;
 }
 .rankings table {
@@ -20,9 +21,7 @@
       background: url('../images/banners/3-movil.jpg');
       background-size: cover;
       background-attachment: fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: space-around;
    }
    .rankings table {
       width: 90%;

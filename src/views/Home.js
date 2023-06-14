@@ -5,10 +5,10 @@ import {Header} from "../components/Header";
 import { Calendar } from "../components/Calendar";
 import { Rankings } from "../components/Rankings";
 import { Teams } from "../components/Teams";
+import { Footer } from "../components/Footer";
 
 import '../css/home.css';
 import '../css/animaciones.css';
-import { Footer } from "../components/Footer";
 
 const Home = () => {
    const fadeUp = document.querySelectorAll('.fadeUp');

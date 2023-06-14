@@ -16,6 +16,7 @@ import { Teams } from './be/views/Teams';
 import { Admin } from './be/views/Admin';
 import { Players } from "./be/views/Players";
 import { Calendar } from "./be/views/Calendar";
+import { CalendarPlayOff } from "./be/views/CalendarPlayOff";
 import { StatisticsPerGame } from './be/views/StatisticsPerGame';
 import NotFound from "./views/NotFound";
 
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/be/views/teams" element={<Teams />} />
         <Route path="/be/views/players" element={<Players />} />
         <Route path="/be/views/calendar" element={<Calendar />} />
+        <Route path="/be/views/calendarPlayOff" element={<CalendarPlayOff />} />
         <Route path="/be/views/statisticsPerGame" element={<StatisticsPerGame />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

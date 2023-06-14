@@ -1,0 +1,48 @@
+.playOff {
+   width: 450px;
+   padding: 10px;
+   margin-bottom: 15px;
+   background-color: #d4d4d45b;
+   backdrop-filter: blur(8px);
+   color: #fff;
+   overflow: hidden;
+   text-align: center;
+}
+.playOff h2 {
+   padding-right: 30px;
+}
+.playOff .playInn {
+   display: flex;
+   justify-content: space-between;
+   background-color: red;
+   height: 0;
+}
+.playOff .playInn .teamA, .playOff .playInn .teamB {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+   bottom: 35px;
+}
+.playOff .playInn #teamA, .playOff .playInn #teamB {
+   position: relative;
+   bottom: 60px;
+}
+.playOff #round2 {
+   position: relative;
+   bottom: 75px;
+}
+.playOff #round3 {
+   position: relative;
+   bottom: 143px;
+}
+.playOff #round4 {
+   position: relative;
+   bottom: 215px;
+}
+.playOff .playInn .lost {
+   opacity: .4;
+}
+.playOff .playInn #hide {
+   display: none;
+}
