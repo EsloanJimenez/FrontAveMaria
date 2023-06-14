@@ -22,15 +22,15 @@ export const PlayOff = () => {
          <h2>PLAYOFFS</h2>
          <svg viewBox='0 0 600 400' className='hide'>
             <line x1="175" y1="60" x2="280" y2="60" stroke="black" stroke-width="2"></line>
-            <line x1="280" y1="60" x2="280" y2="255" stroke="white" stroke-width="2"></line>
-            <line x1="280" y1="160" x2="385" y2="160" stroke="tomato" stroke-width="2"></line>
-            <line x1="175" y1="160" x2="280" y2="160" stroke="blue" stroke-width="2"></line>
+            <line x1="280" y1="60" x2="280" y2="255" stroke="black" stroke-width="2"></line>
+            <line x1="280" y1="160" x2="385" y2="160" stroke="black" stroke-width="2"></line>
+            <line x1="175" y1="160" x2="280" y2="160" stroke="black" stroke-width="2"></line>
             <line x1="280" y1="160" x2="280" y2="255" stroke="black" stroke-width="2"></line>
             <line x1="175" y1="255" x2="280" y2="255" stroke="black" stroke-width="2"></line>
-            <line x1="280" y1="255" x2="385" y2="255" stroke="tomato" stroke-width="2"></line>
-            <line x1="280" y1="360" x2="280" y2="255" stroke="tomato" stroke-width="2"></line>
-            <line x1="280" y1="360" x2="385" y2="360" stroke="blue" stroke-width="2"></line>
-            <line x1="175" y1="360" x2="280" y2="360" stroke="tomato" stroke-width="2"></line>
+            <line x1="280" y1="255" x2="385" y2="255" stroke="black" stroke-width="2"></line>
+            <line x1="280" y1="360" x2="280" y2="255" stroke="black" stroke-width="2"></line>
+            <line x1="280" y1="360" x2="385" y2="360" stroke="black" stroke-width="2"></line>
+            <line x1="175" y1="360" x2="280" y2="360" stroke="black" stroke-width="2"></line>
          </svg>
 
          {
