@@ -14,7 +14,6 @@
 .playOff .playInn {
    display: flex;
    justify-content: space-between;
-   background-color: red;
    height: 0;
 }
 .playOff .playInn .teamA, .playOff .playInn .teamB {

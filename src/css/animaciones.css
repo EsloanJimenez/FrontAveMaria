@@ -39,6 +39,5 @@
 }
 .fade-Left {
    opacity: 1;
-   overflow: hidden;
-   transform: translateX(0);
+   transform: translateX(0)
 }

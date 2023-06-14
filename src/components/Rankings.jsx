@@ -1,4 +1,5 @@
 import '../css/rankings.css'
+import { PlayOff } from './PlayOff'
 
 export const Rankings = ({leagueTeam}) => {
    return(
@@ -25,6 +26,8 @@ export const Rankings = ({leagueTeam}) => {
                }
             </tbody>
          </table>
+
+         <PlayOff />
       </div>
    )
 }

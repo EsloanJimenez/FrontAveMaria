@@ -94,9 +94,8 @@ export const Players = () => {
             fetch(url, requestInit)
             .then(res => res.text())
             .then(res => {
-               let msj = 'Jugador Registrado';
             
-               show_alerta(msj, 'success');
+               show_alerta('Jugador Registrado', 'success');
    
                if(res === 'success') {
                   document.querySelector('#photo').value = null;

@@ -104,18 +104,6 @@ export const StatisticsPerGame = () => {
          setTitle('Registrar Jugador Al Partido');
          setBtnSubmit('Registrar');
       }
-      else if(op === 2) {
-         const fund_new_client = document.querySelector(".selectGame");
-         fund_new_client.classList.remove('hide_font');
-
-         setTimeout(() => {
-            const fadeUp = document.querySelector('.card2');
-            fadeUp.classList.add('fade-Up');
-         }, 100);
-
-         setTitle('Seleccionar Partidos Que Jugaran');
-         setBtnSubmit('Seleccionar');
-      }
    }
 
    const validate = () => {
@@ -619,8 +607,6 @@ export const StatisticsPerGame = () => {
          <div className="container-table">
             <div className='header'>
                <button name="newClient" className="btn-light btn-register" onClick={() => openModal(1)}><span><FontAwesomeIcon icon={faCirclePlus} /></span></button>
-            
-               <button name="selectGame" className="btn-light btn-light-secondary" onClick={() => openModal(2)}><span><FontAwesomeIcon icon={faCirclePlus} /></span></button>
             </div>
 
             <h1>EQUIPO A ({ptTeam1.map(reg => reg.nameTeam)})</h1>
