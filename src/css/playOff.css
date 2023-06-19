@@ -14,7 +14,6 @@
 .playOff .playInn {
    display: flex;
    justify-content: space-between;
-   background-color: red;
    height: 0;
 }
 .playOff .playInn .teamA, .playOff .playInn .teamB {
@@ -45,4 +44,13 @@
 }
 .playOff .playInn #hide {
    display: none;
+}
+.playOff .playInn .won {
+   position: relative;
+   bottom: 55px;
+   display: flex;
+   justify-content: space-between;
+   width: 50px;
+   height: 20px;
+   align-items: center;
 }

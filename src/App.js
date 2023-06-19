@@ -10,6 +10,7 @@ import { Team4 } from "./views/Team4";
 import { Team5 } from "./views/Team5";
 import { Team6 } from "./views/Team6";
 import Leaders from "./views/Leaders";
+import LeadersPlayOff from "./views/LeadersPlayOff";
 
 // BACK END 
 import { Teams } from './be/views/Teams';
@@ -18,6 +19,7 @@ import { Players } from "./be/views/Players";
 import { Calendar } from "./be/views/Calendar";
 import { CalendarPlayOff } from "./be/views/CalendarPlayOff";
 import { StatisticsPerGame } from './be/views/StatisticsPerGame';
+import { StatisticsPerGamePlayOff } from "./be/views/StatisticsPerGamePlayOff";
 import NotFound from "./views/NotFound";
 
 const App = () => {
@@ -32,7 +34,8 @@ const App = () => {
         <Route exact path="/views/4" element={<Team4 />} />
         <Route exact path="/views/5" element={<Team5 />} />
         <Route exact path="/views/6" element={<Team6 />} />
-        <Route exact path="/views/leaders" element={<Leaders />} />
+        <Route exact path="/views/leadersRegular" element={<Leaders />} />
+        <Route exact path="/views/leadersPlayOff" element={<LeadersPlayOff />} />
 
         {/* BACK END  */}
         <Route path="/be/views/admin" element={<Admin />} />
@@ -41,6 +44,7 @@ const App = () => {
         <Route path="/be/views/calendar" element={<Calendar />} />
         <Route path="/be/views/calendarPlayOff" element={<CalendarPlayOff />} />
         <Route path="/be/views/statisticsPerGame" element={<StatisticsPerGame />} />
+        <Route path="/be/views/statisticsPerGamePlayOff" element={<StatisticsPerGamePlayOff />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
