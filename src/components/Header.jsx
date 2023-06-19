@@ -67,7 +67,7 @@ export const Header = () => {
                      </ul>
                   </li>
                   <li><Link to="/views/leadersRegular">Estadisticas Regular</Link></li>
-                  <li><Link to="views/leadersPlayOff">Estadisticas PlayOff</Link></li>
+                  <li><Link to="/views/leadersPlayOff">Estadisticas PlayOff</Link></li>
                   <li><Link to="/views/rules">Reglas</Link></li>
                 </ul>
             </nav>
