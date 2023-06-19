@@ -1,8 +1,12 @@
 import { PlayerStati } from './PlayerStati'
-
-import '../css/player.css'
 import { PlayerTotalStati } from './PlayerTotalStati'
 import { PlayerPercentageStati } from './PlayerPercentageStati'
+
+import { PlayerStatiPlayOff } from './PlayerStatiPlayOff'
+import { PlayerTotalStatiPlayOff } from './PlayerTotalStatiPlayOff'
+import { PlayerPercentageStatiPlayOff } from './PlayerPercentageStatiPlayOff'
+
+import '../css/player.css'
 
 export const Player = ({ player }) => {
 
@@ -18,6 +22,7 @@ export const Player = ({ player }) => {
                   </aside>
 
                   <table>
+                     <tr><td colSpan="7">REGULAR</td></tr>
                      <tr>
                         <td>Juego</td><td>Pt</td><td>As</td><td>Rb</td><td>Tp</td><td>Rbs</td><td>Fat</td>
                      </tr>
@@ -36,6 +41,24 @@ export const Player = ({ player }) => {
                            idPlayer={reg.idPlayer}
                         />
                      }
+
+                     <tr><td colSpan="7">PLAYOFF</td></tr>
+                     {
+                        <PlayerStatiPlayOff
+                           idPlayer={reg.idPlayer}
+                        />
+                     }
+                     {
+                        <PlayerTotalStatiPlayOff
+                           idPlayer={reg.idPlayer}
+                        />
+                     }
+                     {
+                        <PlayerPercentageStatiPlayOff
+                           idPlayer={reg.idPlayer}
+                        />
+                     }
+
                   </table>
                </article>
             )

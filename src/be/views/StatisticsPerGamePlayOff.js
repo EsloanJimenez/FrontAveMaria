@@ -14,9 +14,9 @@ import { show_alerta } from '../../js/Function'
 import '../css/register.css'
 import '../css/buttons.css'
 
-export const StatisticsPerGame = () => {
+export const StatisticsPerGamePlayOff = () => {
    const url = 'https://apiavemaria.onrender.com/api/'
-   const urlOp = 'https://apiavemaria.onrender.com/api/operationStatisti/';                                   
+   const urlOp = 'https://apiavemaria.onrender.com/api/operationStatistiPlayOff/';                                   
 
    const [team1, setTeam1] = useState([]);
    const [team2, setTeam2] = useState([]);
@@ -39,23 +39,23 @@ export const StatisticsPerGame = () => {
    let parameters, parametersTeam, ptT1, ptT2;
 
    useEffect(() => {
-      getStatisticsPerPlayer();
+      getStatisticsPerPlayerPlayOff();
       getScore();
       
       setInterval(() => {
-         getStatisticsPerPlayer();
+         getStatisticsPerPlayerPlayOff();
          getScore();
       }, 10000)
    }, []);
 
-   const getStatisticsPerPlayer = async () => {
-      const cal = await axios(`${url}filterCalendar`);
+   const getStatisticsPerPlayerPlayOff = async () => {
+      const cal = await axios(`${url}filterCalendarPlayOff`);
       setNameGameList(cal.data);
       
-      const tem1 = await axios(`${url}statisticsTeam1/${cal.data[0].idCalendar}/${cal.data[0].team1}`);
+      const tem1 = await axios(`${url}statisticsPlayOffTeam1/${cal.data[0].idCalendarPlayOff}/${cal.data[0].team1}`);
       setTeam1(tem1.data);
 
-      const tem2 = await axios(`${url}statisticsTeam2/${cal.data[0].idCalendar}/${cal.data[0].team2}`);
+      const tem2 = await axios(`${url}statisticsPlayOffTeam2/${cal.data[0].idCalendarPlayOff}/${cal.data[0].team2}`);
       setTeam2(tem2.data);
 
       const tm = await axios(`${url}team`);
@@ -66,21 +66,21 @@ export const StatisticsPerGame = () => {
    }
    
    const getScore = async () => {
-      const cal = await axios(`${url}filterCalendar`);
+      const cal = await axios(`${url}filterCalendarPlayOff`);
       setNameGameList(cal.data);
       
-      const viewScoreTeam1 = await axios(`${url}scoreTeam1/${cal.data[0].idCalendar}/${cal.data[0].team1}`);
+      const viewScoreTeam1 = await axios(`${url}scorePlayOffTeam1/${cal.data[0].idCalendarPlayOff}/${cal.data[0].team1}`);
       setPtTeam1(viewScoreTeam1.data);
 
-      const viewScoreTeam2 = await axios(`${url}scoreTeam2/${cal.data[0].idCalendar}/${cal.data[0].team2}`);
+      const viewScoreTeam2 = await axios(`${url}scorePlayOffTeam2/${cal.data[0].idCalendarPlayOff}/${cal.data[0].team2}`);
       setPtTeam2(viewScoreTeam2.data);
 
       ptT1 = viewScoreTeam1.data[0].pt;
       ptT2 = viewScoreTeam2.data[0].pt;
 
-      parametersTeam = {idCalendar: cal.data[0].idCalendar, pointsTeam1: ptT1, pointsTeam2: ptT2};
+      parametersTeam = {idCalendarPlayOff: cal.data[0].idCalendarPlayOff, pointsTeam1: ptT1, pointsTeam2: ptT2};
 
-      fetch(`${url}updateCalendar/${cal.data[0].idCalendar}`, {
+      fetch(`${url}updateCalendarPlayOff/${cal.data[0].idCalendarPlayOff}`, {
          method: 'PUT',
          headers: {'Content-Type': 'application/json'},
          body: JSON.stringify(parametersTeam)
@@ -120,7 +120,7 @@ export const StatisticsPerGame = () => {
                body: JSON.stringify(parameters)
             }
       
-            fetch(`${url}statisticsPerPlayer`, requestInit)
+            fetch(`${url}statisticsPerPlayerPlayOff`, requestInit)
             .then(res => res.text())
             .then(res => {
                let msj = 'Jugador Registrado En El Partido';
@@ -129,7 +129,7 @@ export const StatisticsPerGame = () => {
    
                if(res === 'success') {
                   closeClient();
-                  getStatisticsPerPlayer();
+                  getStatisticsPerPlayerPlayOff();
                }
             })
 
@@ -150,12 +150,12 @@ export const StatisticsPerGame = () => {
                method: 'DELETE'
             }
       
-            fetch('https://apiavemaria.onrender.com/api/deleteStatisticsPerPlayer/' + idPlayer, requestInit)
+            fetch('http://localhost:9000/api/deleteStatisticsPerPlayerPlayOff/' + idPlayer, requestInit)
             .then(res => res.text())
             .then(res => console.log(res))
 
             show_alerta('Juego Eliminado', 'success')
-            getStatisticsPerPlayer();
+            getStatisticsPerPlayerPlayOff();
          } else {
             show_alerta('El Juego NO fue eliminado', 'info');
          }
@@ -631,7 +631,7 @@ export const StatisticsPerGame = () => {
                      {
                         team1.map((reg, index) => (
                            <tr key={reg.idStatistic}>
-                              <td>{<img className="imgStatist" src={`https://apiavemaria.onrender.com/${reg.photo}` } alt="imagen rota" />}</td>
+                              <td>{<img className="imgStatist" src={`http://localhost:9000/${reg.photo}` } alt="imagen rota" />}</td>
                               <td>{reg.fullName}</td>
                               <td>{reg.jacket}</td>
                               <td>
@@ -695,7 +695,7 @@ export const StatisticsPerGame = () => {
                      {
                         team2.map((reg,index) => (
                            <tr key={reg.idStatistic}>
-                              <td>{<img className="imgStatist" src={`https://apiavemaria.onrender.com/${reg.photo}` } alt="imagen rota" />}</td>
+                              <td>{<img className="imgStatist" src={`http://localhost:9000/${reg.photo}` } alt="imagen rota" />}</td>
                               <td>{reg.fullName}</td>
                               <td>{reg.jacket}</td>
                               <td>
@@ -753,7 +753,7 @@ export const StatisticsPerGame = () => {
                            <option value="0">Seleccione El Partido</option>
                            {
                               nameGameList.map((gameList) =>
-                                 <option key={gameList.idCalendar} value={gameList.idCalendar}>{gameList.nameGame}</option>
+                                 <option key={gameList.idCalendarPlayOff} value={gameList.idCalendarPlayOff}>{gameList.nameGame}</option>
                               )
                            }
                         </select>

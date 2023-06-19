@@ -72,9 +72,10 @@ export const HeaderControler = () => {
                         <li><Link to="/be/views/admin">Administradores</Link></li>
                         <li><Link to="/be/views/teams">Equipos</Link></li>
                         <li><Link to="/be/views/players">Jugadores</Link></li>
-                        <li><Link to="/be/views/calendar">Calendario</Link></li>
-                        <li><Link to="/be/views/calendarPlayOff">PlayOff</Link></li>
-                        <li><Link to="/be/views/statisticsPerGame">Estadisticas Por Juegos</Link></li>
+                        <li><Link to="/be/views/calendar">Calendario Regular</Link></li>
+                        <li><Link to="/be/views/calendarPlayOff">Calendario PlayOff</Link></li>
+                        <li><Link to="/be/views/statisticsPerGame">Estadisticas Por Juegos Regular</Link></li>
+                        <li><Link to="/be/views/statisticsPerGamePlayOff">Estadisticas Por Juegos PlayOff</Link></li>
                      </ul>
                   </li>
                 </ul>

@@ -21,7 +21,8 @@ export const PlayOff = () => {
       <div className="playOff">
          <h2>PLAYOFFS</h2>
          <svg viewBox='0 0 600 400' className='hide'>
-            <line x1="175" y1="60" x2="280" y2="60" stroke="black" stroke-width="2"></line>
+            <line x1="280" y1="60" x2="385" y2="60" stroke="black" stroke-width="2"></line>
+            <line x1="180" y1="60" x2="280" y2="60" stroke="black" stroke-width="2"></line>
             <line x1="280" y1="60" x2="280" y2="255" stroke="black" stroke-width="2"></line>
             <line x1="280" y1="160" x2="385" y2="160" stroke="black" stroke-width="2"></line>
             <line x1="175" y1="160" x2="280" y2="160" stroke="black" stroke-width="2"></line>
@@ -41,12 +42,14 @@ export const PlayOff = () => {
                      {reg.nameTeam1}
                   </div>
 
-                  <span id={i == 3 ? 'hide' : 'teamA'}>{reg.gameWon1}</span>
-                  <span id={i == 3 ? 'hide' : 'teamB'}>{reg.gameWon2}</span>
+                  <div className='won'>
+                     <span>{reg.gameWon1}</span>
+                     <span>{reg.gameWon2}</span>
+                  </div>
 
                   <div className="teamB fadeRight">
                      {reg.nameTeam2}
-                     <img id={i == 3 ? 'hide' : ''} width="50px" src={`https://apiavemaria.onrender.com/${reg.photoTeam2}`}/>
+                     <img width="50px" src={`https://apiavemaria.onrender.com/${reg.photoTeam2}`}/>
                   </div>
                </div>
             ))

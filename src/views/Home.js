@@ -44,6 +44,7 @@ const Home = () => {
    const url = 'https://apiavemaria.onrender.com/api/'
 
    const [calendar, setCalendar] = useState([]);
+   const [calendarPlayOff, setCalendarPlayOff] = useState([]);
    const [leagueTeam, setLeagueTeam] = useState([]);
    const [visitCounter, setVisitCounter] = useState();
 
@@ -59,6 +60,9 @@ const Home = () => {
    const getCalendar = async () => {
       const cal = await axios(`${url}calendar`);
       setCalendar(cal.data);
+
+      const calPlayOff = await axios(`${url}calendarPlayOff`);
+      setCalendarPlayOff(calPlayOff.data);
 
       const le = await axios(`${url}leagueTeam`);
       setLeagueTeam(le.data);
@@ -87,6 +91,7 @@ const Home = () => {
 
          <Calendar
             calendar={calendar}
+            calendarPlayOff = {calendarPlayOff}
          />
 
          <Rankings
