@@ -631,7 +631,7 @@ export const StatisticsPerGamePlayOff = () => {
                      {
                         team1.map((reg, index) => (
                            <tr key={reg.idStatistic}>
-                              <td>{<img className="imgStatist" src={`http://localhost:9000/${reg.photo}` } alt="imagen rota" />}</td>
+                              <td>{<img className="imgStatist" src={`https://apiavemaria.onrender.com/${reg.photo}` } alt="imagen rota" />}</td>
                               <td>{reg.fullName}</td>
                               <td>{reg.jacket}</td>
                               <td>
@@ -695,7 +695,7 @@ export const StatisticsPerGamePlayOff = () => {
                      {
                         team2.map((reg,index) => (
                            <tr key={reg.idStatistic}>
-                              <td>{<img className="imgStatist" src={`http://localhost:9000/${reg.photo}` } alt="imagen rota" />}</td>
+                              <td>{<img className="imgStatist" src={`https://apiavemaria.onrender.com/${reg.photo}` } alt="imagen rota" />}</td>
                               <td>{reg.fullName}</td>
                               <td>{reg.jacket}</td>
                               <td>
