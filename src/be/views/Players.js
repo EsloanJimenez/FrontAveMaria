@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -28,6 +28,10 @@ export const Players = () => {
    const [btnSubmit, setBtnSubmit] = useState('');
    const [operation, setOperation] = useState(1);
 
+   const refFundPlayer = useRef();
+   const refFadeUp = useRef();
+   const refPhotoTeam = useRef();
+
    useEffect(() => {
       getPlayer();
    }, []);
@@ -41,12 +45,10 @@ export const Players = () => {
    }
 
    const openModal = (op, id, photo, fullName, team, jacket) => {
-      const fund_new_client = document.querySelector(".container-form");
-      fund_new_client.classList.remove('hide_font');
-
+      refFundPlayer.current.classList.remove('hide_font');
+      
       setTimeout(() => {
-         const fadeUp = document.querySelector('.card');
-         fadeUp.classList.add('fade-Up');
+         refFadeUp.current.classList.add('fade-Up');
       }, 100);
       
       setIds('');
@@ -98,7 +100,7 @@ export const Players = () => {
                show_alerta('Jugador Registrado', 'success');
    
                if(res === 'success') {
-                  document.querySelector('#photo').value = null;
+                  refPhotoTeam.current.value = null;
 
                   setPhoto(null);
 
@@ -124,7 +126,7 @@ export const Players = () => {
                show_alerta(msj, 'success');
    
                if(res === 'player updated!') {
-                  document.querySelector('#photo').value = null;
+                  refPhotoTeam.current.value = null;
 
                   setPhoto(null);
 
@@ -203,8 +205,8 @@ export const Players = () => {
             </div>
 
             {/* REGISTRAR JUGADOR  */}
-            <div className="container-form hide">
-               <div className="card fadeUp">
+            <div className="container-form hide" ref={refFundPlayer}>
+               <div className="card fadeUp" ref={refFadeUp}>
                   <div className="card-header">
                      <span className='title'>{title}</span>
                      <button className='closeClient' onClick={closeClient}>X</button>
@@ -214,7 +216,7 @@ export const Players = () => {
                      <form action="http://localhost:9000/api/player" method="post" enctype="multipart/form-data">
                         <div className="mb-3">
                               <label for="photo" className="form-label">Foto</label>
-                              <input type="file" className="form-control" id="photo" name="photo" onChange={(e) => setPhoto(e.target.files[0].name)} />
+                              <input type="file" className="form-control" ref={refPhotoTeam} name="photo" onChange={(e) => setPhoto(e.target.files[0].name)} />
                            </div>
                         <div className="mb-3">
                            <label for="name" className="form-label">Nombre Completo</label>

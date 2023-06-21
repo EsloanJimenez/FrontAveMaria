@@ -1,12 +1,13 @@
 import '../css/calendar.css';
 
-export const Calendar = ({ calendar, calendarPlayOff }) => {
+export const Calendar = ({ calendar, calendarPlayOff, refRegular, refPlayOff }) => {
+
    return (
       <div id='calendar'>
          <section className='hide'>
             {
                calendar.map((reg, i) =>
-                  <article key={i} className="fadeUp">
+                  <article ref={(element) => refRegular.current[i] = element} key={i} className="fadeUp">
                      <h3>{reg.nameGame}</h3>
                      <div>
                         <h4>{reg.date}</h4>
@@ -25,7 +26,7 @@ export const Calendar = ({ calendar, calendarPlayOff }) => {
 
             {
                calendarPlayOff.map((reg, i) =>
-                  <article key={i} className="fadeUp">
+                  <article key={i} ref={(element) => refPlayOff.current[i] = element} className="fadeDown">
                      <h3>{reg.nameGame}</h3>
                      <div>
                         <h4>{reg.date}</h4>

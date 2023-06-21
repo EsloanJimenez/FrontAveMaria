@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -35,6 +35,9 @@ export const StatisticsPerGame = () => {
    const [title, setTitle] = useState([]);
    const [btnSubmit, setBtnSubmit] = useState('');
    const [operation, setOperation] = useState(1);
+
+   const refFundPlayer = useRef();
+   const refFadeUp = useRef();
 
    let parameters, parametersTeam, ptT1, ptT2;
 
@@ -93,12 +96,10 @@ export const StatisticsPerGame = () => {
       setOperation(op);
 
       if(op === 1) {
+         refFundPlayer.current.classList.remove('hide_font');
+      
          setTimeout(() => {
-            const fund_new_client = document.querySelector(".container-form");
-            fund_new_client.classList.remove('hide_font');
-
-            const fadeUp = document.querySelector('.card');
-            fadeUp.classList.add('fade-Up');
+            refFadeUp.current.classList.add('fade-Up');
          }, 100);
 
          setTitle('Registrar Jugador Al Partido');
@@ -739,8 +740,8 @@ export const StatisticsPerGame = () => {
             </div>
 
             {/* REGISTRAR JUGADOR AL JUEGO  */}
-            <div className="container-form hide hide_font">
-               <div className="card fadeUp">
+            <div className="container-form hide hide_font" ref={refFundPlayer}>
+               <div className="card fadeUp" ref={refFadeUp}>
                   <div className="card-header">
                      <span className='title'>{title}</span>
                      <button className='closeClient' onClick={closeClient}>X</button>

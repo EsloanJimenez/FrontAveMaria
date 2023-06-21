@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 
 import '../../css/main.css'
@@ -11,32 +11,45 @@ import { faAngleDown, faBars} from '@fortawesome/free-solid-svg-icons'
 export const HeaderControler = () => {
    const [teamList, setTeamList] = useState([]);
 
-   useEffect(() => {
-      getTeamList();
+   const refMain = useRef();
+   const refSubMain1 = useRef();
+   const refSubMain2 = useRef();
+   
+   const btnMain = () => {
+      refMain.current.classList.toggle("view");
+   }
 
-      const btnMain = document.querySelector("#btnMain");
-      const main = document.querySelector("#main");
-
-      btnMain.addEventListener("click", () => {
-      main.classList.toggle("view");
-      });
-
-      const subMainBtn = document.querySelector(".subMainBtn");
-
-      subMainBtn.addEventListener("click", () => {
+   const subMainBtn1 = () => {
       if (window.innerWidth < 1024) {
-         const subMain = document.querySelector(".subMain");
-         const height = subMain.scrollHeight;
+         const height1 = refSubMain1.current.scrollHeight;
 
-         if (subMain.classList.contains("desplegar")) {
-            subMain.classList.remove("desplegar");
-            subMain.removeAttribute("style");
+         if (refSubMain1.current.classList.contains("desplegar")) {
+            refSubMain1.current.classList.remove("desplegar");
+            refSubMain1.current.removeAttribute("style");
          } else {
-            subMain.classList.add("desplegar");
-            subMain.style.height = height + "px";
+            refSubMain1.current.classList.add("desplegar");
+            refSubMain1.current.style.height = height1 + "px";
          }
       }
-      });
+   }
+
+   const subMainBtn2 = () => {
+      if (window.innerWidth < 1024) {
+         const height2 = refSubMain2.current.scrollHeight;
+
+         if (refSubMain2.current.classList.contains("desplegar")) {
+            refSubMain2.current.classList.remove("desplegar");
+            refSubMain2.current.removeAttribute("style");
+         } else {
+            refSubMain2.current.classList.add("desplegar");
+            refSubMain2.current.style.height = height2 + "px";
+         }
+      }
+   }
+   
+
+   useEffect(() => {
+      getTeamList();
    }, [])
 
    const getTeamList = async () => {
@@ -48,13 +61,13 @@ export const HeaderControler = () => {
       <div id="home">
           {/* ----- HEADER ----- */}
          <header>
-            <span className="navBar" id="btnMain"><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
+            <span className="navBar" onClick={btnMain}><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
             <nav className="mainNav">
-               <ul className='main' id='main'>
+               <ul className='main' ref={refMain}>
                   <li><Link to="/">Inicio</Link></li>
                   <li className='containerSubMain'>
-                     <Link to="#" className='subMainBtn'><span>Equipos</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
-                     <ul className='subMain'>
+                     <Link to="#" className='subMainBtn' onClick={subMainBtn1}><span>Equipos</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
+                     <ul className='subMain' ref={refSubMain1}>
                         {
                            teamList.map((reg, i) =>
                               <li key={i}>
@@ -67,8 +80,8 @@ export const HeaderControler = () => {
                   <li><Link to="/views/leaders">Estadisticas</Link></li>
                   <li><Link to="/views/rules">Reglas</Link></li>
                   <li className='containerSubMain'>
-                     <Link to="#" className='subMainBtn'><span>Registros</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
-                     <ul className='subMain'>
+                     <Link to="#" className='subMainBtn' onClick={subMainBtn2}><span>Registros</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
+                     <ul className='subMain' ref={refSubMain2}>
                         <li><Link to="/be/views/admin">Administradores</Link></li>
                         <li><Link to="/be/views/teams">Equipos</Link></li>
                         <li><Link to="/be/views/players">Jugadores</Link></li>

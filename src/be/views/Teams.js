@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -28,6 +28,11 @@ export const Teams = () => {
    const [btnSubmit, setBtnSubmit] = useState('');
    const [operation, setOperation] = useState(1);
 
+   const refFundPlayer = useRef();
+   const refFadeUp = useRef();
+   const refPhoto = useRef();
+   const refLogo = useRef();
+
    useEffect(() => {
       getTeams();
    }, []);
@@ -38,12 +43,10 @@ export const Teams = () => {
    }
 
    const openModal = (op, id, name, photo, logo) => {
-      const fund_new_client = document.querySelector(".container-form");
-      fund_new_client.classList.remove('hide_font');
-
+      refFundPlayer.current.classList.remove('hide_font');
+      
       setTimeout(() => {
-         const fadeUp = document.querySelector('.card');
-         fadeUp.classList.add('fade-Up');
+         refFadeUp.current.classList.add('fade-Up');
       }, 100);
       
       setIds('');
@@ -92,8 +95,8 @@ export const Teams = () => {
                show_alerta(msj, 'success');
    
                if(res === 'success') {
-                  document.querySelector('#photo').value = null;
-                  document.querySelector('#logo').value = null;
+                  refPhoto.current.value = null;
+                  refLogo.current.value = null;
 
                   setPhoto(null);
                   setLogo(null);
@@ -120,8 +123,8 @@ export const Teams = () => {
                show_alerta(msj, 'success');
    
                if(res === 'Team updated!') {
-                  document.querySelector('#photo').value = null;
-                  document.querySelector('#logo').value = null;
+                  refPhoto.current.value = null;
+                  refLogo.current.value = null;
 
                   setPhoto(null);
                   setLogo(null);
@@ -272,8 +275,8 @@ export const Teams = () => {
             </div>
 
             {/* REGISTRAR EQUIPO  */}
-            <div className="container-form hide hide_font">
-               <div className="card fadeUp">
+            <div className="container-form hide hide_font" ref={refFundPlayer}>
+               <div className="card fadeUp" ref={refFadeUp}>
                   <div className="card-header">
                      <span className='title'>{title}</span>
                      <button className='closeClient' onClick={closeClient}>X</button>
@@ -286,11 +289,11 @@ export const Teams = () => {
                         </div>
                         <div className="mb-3">
                            <label for="photo" className="form-label">Foto</label>
-                           <input type="file" className="form-control" id="photo" name="photo" onChange={(e) => setPhoto(e.target.files[0].name)} />
+                           <input type="file" className="form-control" ref={refPhoto} id="photo" name="photo" onChange={(e) => setPhoto(e.target.files[0].name)} />
                         </div>
                         <div className="mb-3">
                            <label for="logo" className="form-label">Logo</label>
-                           <input type="file" className="form-control" id="logo" name="logo" onChange={(e) => setLogo(e.target.files[0].name)} />
+                           <input type="file" className="form-control" ref={refLogo} id="logo" name="logo" onChange={(e) => setLogo(e.target.files[0].name)} />
                         </div>
                         <button onClick={() => validate()} className="btn btn-primary" >{btnSubmit}</button>
                      </form>

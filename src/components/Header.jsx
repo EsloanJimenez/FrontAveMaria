@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import '../css/main.css'
 import '../css/style.css'
@@ -11,32 +11,29 @@ import axios from 'axios'
 export const Header = () => {
    const [teamList, setTeamList] = useState([]);
 
-   useEffect(() => {
-      getTeamList();
+   const refMain = useRef();
+   const refSubMain = useRef();
+   
+   const btnMain = () => {
+      refMain.current.classList.toggle("view");
+   }
 
-      const btnMain = document.querySelector("#btnMain");
-      const main = document.querySelector("#main");
-
-      btnMain.addEventListener("click", () => {
-         main.classList.toggle("view");
-      });
-
-      const subMainBtn = document.querySelector(".subMainBtn");
-
-      subMainBtn.addEventListener("click", () => {
+   const subMainBtn = () => {
       if (window.innerWidth < 1024) {
-         const subMain = document.querySelector(".subMain");
-         const height = subMain.scrollHeight;
+         const height = refSubMain.current.scrollHeight;
 
-         if (subMain.classList.contains("desplegar")) {
-            subMain.classList.remove("desplegar");
-            subMain.removeAttribute("style");
+         if (refSubMain.current.classList.contains("desplegar")) {
+            refSubMain.current.classList.remove("desplegar");
+            refSubMain.current.removeAttribute("style");
          } else {
-            subMain.classList.add("desplegar");
-            subMain.style.height = height + "px";
+            refSubMain.current.classList.add("desplegar");
+            refSubMain.current.style.height = height + "px";
          }
       }
-      });
+   }
+
+   useEffect(() => {
+      getTeamList();
    }, [])
 
    const getTeamList = async () => {
@@ -48,14 +45,14 @@ export const Header = () => {
       <div id="home">
           {/* ----- HEADER ----- */}
          <header>
-            <span className="navBar" id="btnMain"><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
+            <span className="navBar" onClick={btnMain} ><FontAwesomeIcon icon={faBars} /><span>Liga Ave Maria</span></span> 
             <nav className="mainNav">
-               <ul className='main' id='main'>
+               <ul ref={refMain} className='main'>
                   <li><Link to="/">Inicio</Link></li>
                   <li><Link to="/views/timer">Temporizador</Link></li>
                   <li className='containerSubMain'>
-                     <Link className='subMainBtn'><span>Equipos</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
-                     <ul className='subMain'>
+                     <Link className='subMainBtn' onClick={subMainBtn}><span>Equipos</span><span><FontAwesomeIcon icon={faAngleDown} /></span></Link>
+                     <ul className='subMain' ref={refSubMain}>
                         {
                            teamList.map((reg, i) =>
                               <li key={i}>

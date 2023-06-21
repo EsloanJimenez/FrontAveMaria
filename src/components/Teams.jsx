@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import '../css/teams.css'
 
-export const Teams = () => {
+export const Teams = ({refTeam}) => {
    const [team, setTeam] = useState([]);
 
    useEffect(() => {
@@ -20,7 +20,7 @@ export const Teams = () => {
          <section className='hide'>
             {
                team.map((reg, i) =>
-                  <article key={i} className='fadeDown'>
+                  <article key={i} ref={(e) => refTeam.current[i] = e} className='fadeDown'>
                      <img width="300px" height="250px" src={'http://localhost:9000/' + reg.photoTeam} />
                      <img width="50px" src={'http://localhost:9000/' + reg.iconTeam} />
                   </article>

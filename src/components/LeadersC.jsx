@@ -1,9 +1,13 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { closeClient } from '../js/RegistrationForm';
 import { PlayerStati } from './PlayerStati';
 import { PlayerTotalStati } from './PlayerTotalStati';
 import { PlayerPercentageStati } from './PlayerPercentageStati';
+
+import { PlayerStatiPlayOff } from './PlayerStatiPlayOff'
+import { PlayerTotalStatiPlayOff } from './PlayerTotalStatiPlayOff'
+import { PlayerPercentageStatiPlayOff } from './PlayerPercentageStatiPlayOff'
 
 import '../css/leaders.css'
 
@@ -13,13 +17,14 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
    const [iconTeam, setIconTeam] = useState(null);
    const [photoPlayer, setPhotoPlayer] = useState(null);
 
+   const refFundPlayer = useRef();
+   const refFadeUp = useRef();
+
    const openModal = async (id, namePlayer, iconTeam, photoPlayer) => {
-      const fund_new_client = document.querySelector(".container-form");
-      fund_new_client.classList.remove('hide_font');
+      refFundPlayer.current.classList.remove('hide_font');
 
       setTimeout(() => {
-         const fadeUp = document.querySelector('.card');
-         fadeUp.classList.add('fade-Up');
+         refFadeUp.current.classList.add('fade-Up');
       }, 100);
 
       setIds(id);
@@ -190,8 +195,8 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
          </section>
 
          {/* VER JUGADOR  */}
-         <div className="container-form hide">
-            <div className="card fadeUp">
+         <div className="container-form hide" ref={refFundPlayer}>
+            <div className="card fadeUp" ref={refFadeUp}>
                <div className="card-header">
                   <span className='title'>{namePlayer}</span>
                   <button className='closeClient' onClick={closeClient}>X</button>
@@ -205,6 +210,7 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                      </div>
 
                      <table>
+                        <tr><td colSpan="7">REGULAR</td></tr>
                         <tr>
                            <td>Juego</td><td>Pt</td><td>As</td><td>Rb</td><td>Tp</td><td>Rbs</td><td>Fat</td>
                         </tr>
@@ -220,6 +226,23 @@ export const LeadersC = ({ leaderPoints, leaderAssists, leaderRebounds, leaderSt
                         }
                         {
                            <PlayerPercentageStati
+                              idPlayer={ids}
+                           />
+                        }
+
+                        <tr><td colSpan="7">PLAYOFF</td></tr>
+                        {
+                           <PlayerStatiPlayOff
+                              idPlayer={ids}
+                           />
+                        }
+                        {
+                           <PlayerTotalStatiPlayOff
+                              idPlayer={ids}
+                           />
+                        }
+                        {
+                           <PlayerPercentageStatiPlayOff
                               idPlayer={ids}
                            />
                         }

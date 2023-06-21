@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 import '../css/playOff.css'
 
-export const PlayOff = () => {
+export const PlayOff = ({refTablePlayOffLeft, refTablePlayOffRight}) => {
    const url = 'http://localhost:9000/api/';
 
    const [calendar, setCalendar] = useState([]);
@@ -37,7 +37,7 @@ export const PlayOff = () => {
          {
             calendar.map((reg, i) => (
                <div key={i} className='playInn' id={i == 1 ? 'round2' : i == 2 ? 'round3' : i == 3 ? 'round4' : ''}>
-                  <div className='teamA fadeUp'>
+                  <div ref={(e) => refTablePlayOffLeft.current[i] = e} className='teamA fadeLeft'>
                      <img width="50px" src={`http://localhost:9000/${reg.photoTeam1}`} alt="imagen rota" />
                      {reg.nameTeam1}
                   </div>
@@ -47,7 +47,7 @@ export const PlayOff = () => {
                      <span>{reg.gameWon2}</span>
                   </div>
 
-                  <div className="teamB fadeRight">
+                  <div ref={(e) => refTablePlayOffRight.current[i] = e} className="teamB fadeRight">
                      {reg.nameTeam2}
                      <img width="50px" src={`http://localhost:9000/${reg.photoTeam2}`} />
                   </div>

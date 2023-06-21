@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useRef, useEffect } from "react"
 import axios from 'axios'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -33,6 +33,11 @@ export const Calendar = () => {
    const [btnSubmit, setBtnSubmit] = useState('');
    const [operation, setOperation] = useState(1);
 
+   const refFundPlayer = useRef();
+   const refFadeUp = useRef();
+   const refPhotoTeam1 = useRef();
+   const refPhotoTeam2 = useRef();
+
    useEffect(() => {
       getCalendar();
    }, []);
@@ -46,12 +51,10 @@ export const Calendar = () => {
    }
 
    const openModal = async (op, id, nameGame, gameDate, team1, team2, photoTeam1, photoTeam2, status) => {
-      const fund_new_client = document.querySelector(".container-form");
-      fund_new_client.classList.remove('hide_font');
+      refFundPlayer.current.classList.remove('hide_font');
       
       setTimeout(() => {
-         const fadeUp = document.querySelector('.card');
-         fadeUp.classList.add('fade-Up');
+         refFadeUp.current.classList.add('fade-Up');
       }, 100);
       
       setIds('');
@@ -105,8 +108,8 @@ export const Calendar = () => {
                show_alerta(msj, 'success');
    
                if(res === 'success') {
-                  document.querySelector('#photoTeam1').value = null;
-                  document.querySelector('#photoTeam2').value = null;
+                  refPhotoTeam1.current.value = null;
+                  refPhotoTeam2.current.value = null;
 
                   setPhotoTeam1(null);
                   setPhotoTeam2(null);
@@ -133,8 +136,8 @@ export const Calendar = () => {
                show_alerta(msj, 'success');
 
                if(res === 'calendar updated!') {
-                  document.querySelector('#photoTeam1').value = null;
-                  document.querySelector('#photoTeam2').value = null;
+                  refPhotoTeam1.current.value = null;
+                  refPhotoTeam2.current.value = null;
 
                   setPhotoTeam1(null);
                   setPhotoTeam2(null);
@@ -292,8 +295,8 @@ export const Calendar = () => {
             </div>
 
             {/* REGISTRAR CALENDARIO  */}
-            <div className="container-form hide hide_font">
-               <div className="card fadeUp">
+            <div className="container-form hide hide_font" ref={refFundPlayer}>
+               <div className="card fadeUp" ref={refFadeUp}>
                   <div className="card-header">
                      <span className='title'>{title}</span>
                      <button className='closeClient' onClick={closeClient}>X</button>
@@ -320,7 +323,7 @@ export const Calendar = () => {
                      </div>
                      <div className="mb-3">
                         <label for="photoTeam1" className="form-label">Foto Equipo 1</label>
-                        <input type="file" className="form-control" id="photoTeam1" name="photoTeam1" onChange={(e) => setPhotoTeam1(e.target.files[0].name)} />
+                        <input type="file" className="form-control" ref={refPhotoTeam1} id="photoTeam1" name="photoTeam1" onChange={(e) => setPhotoTeam1(e.target.files[0].name)} />
                      </div>
                      <div className="mb-3">
                         <label for="team2" className="form-label">Equipo 2</label>
@@ -334,7 +337,7 @@ export const Calendar = () => {
                      </div>
                      <div className="mb-3">
                         <label for="photoTeam2" className="form-label">Foto Equipo 2</label>
-                        <input type="file" className="form-control" id="photoTeam2" name="photoTeam2" onChange={(e) => setPhotoTeam2(e.target.files[0].name)} />
+                        <input type="file" className="form-control" ref={refPhotoTeam2} id="photoTeam2" name="photoTeam2" onChange={(e) => setPhotoTeam2(e.target.files[0].name)} />
                      </div>
                      <div className="mb-3">
                         <label for="status" className="form-label">Status</label>
