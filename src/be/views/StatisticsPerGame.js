@@ -163,12 +163,9 @@ export const StatisticsPerGame = () => {
       });
    }
 
-   const opPtTeam1 = async (index, player, op) => {
+   const opPtTeam1 = async (player, op) => {
       if(op) {
          player.points +=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
 
          parameters = {idStatistic: player.idStatistic, points: player.points};
                
@@ -182,9 +179,6 @@ export const StatisticsPerGame = () => {
             });
       } else {
          player.points -=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
          
          parameters = {idStatistic: player.idStatistic, points: player.points};
                
@@ -199,12 +193,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opAsTeam1 = (index, player, op) => {
+   const opAsTeam1 = (player, op) => {
       if(op) {
          player.assists +=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
    
          parameters = {idStatistic: player.idStatistic, assists: player.assists};
                
@@ -218,9 +209,6 @@ export const StatisticsPerGame = () => {
             })
       } else {
          player.assists -=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
          
          parameters = {idStatistic: player.idStatistic, assists: player.assists};
                
@@ -235,12 +223,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opRebTeam1 = (index, player, op) => {
+   const opRebTeam1 = (player, op) => {
       if(op) {
          player.rebounds +=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
    
          parameters = {idStatistic: player.idStatistic, rebounds: player.rebounds};
                
@@ -254,9 +239,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.rebounds -=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
          
          parameters = {idStatistic: player.idStatistic, rebounds: player.rebounds};
                
@@ -271,12 +253,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opStoTeam1 = (index, player, op) => {
+   const opStoTeam1 = (player, op) => {
       if(op) {
          player.stoppers +=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
    
          parameters = {idStatistic: player.idStatistic, stoppers: player.stoppers};
                
@@ -290,9 +269,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.stoppers -=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
          
          parameters = {idStatistic: player.idStatistic, stoppers: player.stoppers};
                
@@ -307,12 +283,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opRobTeam1 = (index, player, op) => {   
+   const opRobTeam1 = (player, op) => {   
       if(op) {
          player.robberies +=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
    
          parameters = {idStatistic: player.idStatistic, robberies: player.robberies};
                
@@ -326,9 +299,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.robberies -=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
          
          parameters = {idStatistic: player.idStatistic, robberies: player.robberies};
                
@@ -343,12 +313,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opFauTeam1 = (index, player, op) => {   
+   const opFauTeam1 = (player, op) => {   
       if(op) {
          player.faults +=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
    
          parameters = {idStatistic: player.idStatistic, faults: player.faults};
                
@@ -362,9 +329,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.faults -=1;
-         const newArr = [...team1];
-         newArr[index] = player;
-         setTeam1(newArr);
          
          parameters = {idStatistic: player.idStatistic, faults: player.faults};
                
@@ -379,12 +343,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opPtTeam2 = (index, player, op) => {
+   const opPtTeam2 = (player, op) => {
       if(op) {
          player.points +=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
    
          parameters = {idStatistic: player.idStatistic, points: player.points};
                
@@ -398,9 +359,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.points -=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
          
          parameters = {idStatistic: player.idStatistic, points: player.points};
                
@@ -415,12 +373,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opAsTeam2 = (index, player, op) => {
+   const opAsTeam2 = (player, op) => {
       if(op) {
          player.assists +=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
    
          parameters = {idStatistic: player.idStatistic, assists: player.assists};
                
@@ -434,9 +389,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.assists -=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
          
          parameters = {idStatistic: player.idStatistic, assists: player.assists};
                
@@ -451,12 +403,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opRebTeam2 = (index, player, op) => {
+   const opRebTeam2 = (player, op) => {
       if(op) {
          player.rebounds +=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
    
          parameters = {idStatistic: player.idStatistic, rebounds: player.rebounds};
                
@@ -470,9 +419,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.rebounds -=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
          
          parameters = {idStatistic: player.idStatistic, rebounds: player.rebounds};
                
@@ -487,12 +433,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opStoTeam2 = (index, player, op) => {
+   const opStoTeam2 = (player, op) => {
       if(op) {
          player.stoppers +=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
    
          parameters = {idStatistic: player.idStatistic, stoppers: player.stoppers};
                
@@ -506,9 +449,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.stoppers -=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
          
          parameters = {idStatistic: player.idStatistic, stoppers: player.stoppers};
                
@@ -523,12 +463,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opRobTeam2 = (index, player, op) => {   
+   const opRobTeam2 = (player, op) => {   
       if(op) {
          player.robberies +=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
    
          parameters = {idStatistic: player.idStatistic, robberies: player.robberies};
                
@@ -542,9 +479,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.robberies -=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
          
          parameters = {idStatistic: player.idStatistic, robberies: player.robberies};
                
@@ -559,12 +493,9 @@ export const StatisticsPerGame = () => {
       }
    }
 
-   const opFauTeam2 = (index, player, op) => {   
+   const opFauTeam2 = (player, op) => {   
       if(op) {
          player.faults +=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
    
          parameters = {idStatistic: player.idStatistic, faults: player.faults};
                
@@ -578,9 +509,6 @@ export const StatisticsPerGame = () => {
          })
       } else {
          player.faults -=1;
-         const newArr = [...team2];
-         newArr[index] = player;
-         setTeam2(newArr);
          
          parameters = {idStatistic: player.idStatistic, faults: player.faults};
                
@@ -636,34 +564,34 @@ export const StatisticsPerGame = () => {
                               <td>{reg.fullName}</td>
                               <td>{reg.jacket}</td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=> opPtTeam1(index, reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=> opPtTeam1(reg, false)}>-</button>
                                  {reg.points}
-                                 <button type="button" className="btn btn-info" onClick={()=> opPtTeam1(index, reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=> opPtTeam1(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=> opAsTeam1(index, reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=> opAsTeam1(reg, false)}>-</button>
                                  {reg.assists}
-                                 <button type="button" className="btn btn-info" onClick={()=> opAsTeam1(index, reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=> opAsTeam1(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=> opRebTeam1(index, reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=> opRebTeam1(reg, false)}>-</button>
                                  {reg.rebounds}
-                                 <button type="button" className="btn btn-info" onClick={()=> opRebTeam1(index, reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=> opRebTeam1(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=> opStoTeam1(index, reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=> opStoTeam1(reg, false)}>-</button>
                                  {reg.stoppers}
-                                 <button type="button" className="btn btn-info" onClick={()=> opStoTeam1(index, reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=> opStoTeam1(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=> opRobTeam1(index, reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=> opRobTeam1(reg, false)}>-</button>
                                  {reg.robberies}
-                                 <button type="button" className="btn btn-info" onClick={()=> opRobTeam1(index, reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=> opRobTeam1(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=> opFauTeam1(index, reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=> opFauTeam1(reg, false)}>-</button>
                                  {reg.faults}
-                                 <button type="button" className="btn btn-info" onClick={()=> opFauTeam1(index, reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=> opFauTeam1(reg, true)}>+</button>
                               </td>
                               <td>
                                  <button onClick={() => deleteCustomer(reg.idStatistic, reg.game)} className="btn btn-delete">Eliminar</button>
@@ -749,7 +677,7 @@ export const StatisticsPerGame = () => {
 
                   <div className="card-body">
                      <div className="mb-3">
-                        <label for="nameGame" className="form-label">Seleccione Partido</label>
+                        <label htmlFor="nameGame" className="form-label">Seleccione Partido</label>
                         <select className="form-control" id="nameGame" name="nameGame" onChange={(e) => setNameGame(e.target.value)}>
                            <option value="0">Seleccione El Partido</option>
                            {
@@ -760,7 +688,7 @@ export const StatisticsPerGame = () => {
                         </select>
                      </div>
                      <div className="mb-3">
-                        <label for="nameTeam" className="form-label">Equipo</label>
+                        <label htmlFor="nameTeam" className="form-label">Equipo</label>
                         <select className="form-control" id="nameTeam" name="nameTeam" onChange={(e) => setNameTeam(e.target.value)}>
                            <option value="0">Seleccione El Equipo</option>
                            {
@@ -771,7 +699,7 @@ export const StatisticsPerGame = () => {
                         </select>
                      </div>
                      <div className="mb-3">
-                        <label for="namePlayer" className="form-label">Jugador</label>
+                        <label htmlFor="namePlayer" className="form-label">Jugador</label>
                         <select className="form-control" id="namePlayer" name="namePlayer" onChange={(e) => setNamePlayer(e.target.value)}>
                            <option value="0">Seleccione El Jugador</option>
                            {
