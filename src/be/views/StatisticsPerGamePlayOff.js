@@ -8,7 +8,7 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 
 import { HeaderControler } from "../components/HeaderControler"
 import { Board } from "../components/Board"
-import { closeClient, closeSelectGame } from '../../js/RegistrationForm'
+import { closeClient, closeClientPeriod, closeSelectGame } from '../../js/RegistrationForm'
 import { show_alerta } from '../../js/Function'
 
 import '../css/register.css'
@@ -27,6 +27,7 @@ export const StatisticsPerGamePlayOff = () => {
 
    const [ptTeam1, setPtTeam1] = useState([]);
    const [ptTeam2, setPtTeam2] = useState([]);
+   const [board, setBoard] = useState([]);
 
    const [nameGame, setNameGame] = useState();
    const [nameTeam, setNameTeam] = useState(0);
@@ -37,7 +38,9 @@ export const StatisticsPerGamePlayOff = () => {
    const [operation, setOperation] = useState(1);
 
    const refFundPlayer = useRef();
-   const refFadeUp = useRef();
+   const refFundPeriod = useRef();
+   const refFadeUpPlayer = useRef();
+   const refFadeUpPeriod = useRef();
 
    let parameters, parametersTeam, ptT1, ptT2;
 
@@ -71,6 +74,9 @@ export const StatisticsPerGamePlayOff = () => {
    const getScore = async () => {
       const cal = await axios(`${url}filterCalendarPlayOff`);
       setNameGameList(cal.data);
+
+      const bd = await axios(`${url}board/${cal.data[0].idCalendarPlayOff}`);
+      setBoard(bd.data);
       
       const viewScoreTeam1 = await axios(`${url}scorePlayOffTeam1/${cal.data[0].idCalendarPlayOff}/${cal.data[0].team1}`);
       setPtTeam1(viewScoreTeam1.data);
@@ -99,10 +105,19 @@ export const StatisticsPerGamePlayOff = () => {
          refFundPlayer.current.classList.remove('hide_font');
       
          setTimeout(() => {
-            refFadeUp.current.classList.add('fade-Up');
+            refFadeUpPlayer.current.classList.add('fade-Up');
          }, 100);
 
          setTitle('Registrar Jugador Al Partido');
+         setBtnSubmit('Registrar');
+      } else {
+         refFundPeriod.current.classList.remove('hide_font');
+      
+         setTimeout(() => {
+            refFadeUpPeriod.current.classList.add('fade-Up');
+         }, 100);
+
+         setTitle('Registrar Periodo Al Partido');
          setBtnSubmit('Registrar');
       }
    }
@@ -135,6 +150,26 @@ export const StatisticsPerGamePlayOff = () => {
             })
 
          }      
+      }
+   }
+
+   const validatePeriod = () => {
+      if(nameGame === "0") show_alerta('Seleccione el partido', 'warning')
+      else {
+         const requestInitRoom = {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({game: nameGame, pointsTeamA: 0, pointsTeamB: 0})
+         }
+
+         fetch(`${url}roomPlayOff`, requestInitRoom)
+         .then(res => res.text())
+         .then(res => {
+            if(res === 'success') {
+               refFundPeriod.current.classList.remove('fade-Up');
+               refFundPeriod.current.classList.add('fadeUp');
+            }
+         })
       }
    }
 
@@ -531,11 +566,13 @@ export const StatisticsPerGamePlayOff = () => {
          <Board 
             ptTeam1={ptTeam1}
             ptTeam2={ptTeam2}
+            board={board}
          />
 
          <div className="container-table">
             <div className='header'>
                <button name="newClient" className="btn-light btn-register" onClick={() => openModal(1)}><span><FontAwesomeIcon icon={faCirclePlus} /></span></button>
+               <button name="newClient" className="btn-light btn-light-secondary" onClick={() => openModal(2)}><span><FontAwesomeIcon icon={faCirclePlus} /></span></button>
             </div>
 
             <h1>EQUIPO A ({ptTeam1.map(reg => reg.nameTeam)})</h1>
@@ -628,34 +665,34 @@ export const StatisticsPerGamePlayOff = () => {
                               <td>{reg.fullName}</td>
                               <td>{reg.jacket}</td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=>opPtTeam2(index,reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=>opPtTeam2(reg, false)}>-</button>
                                  {reg.points}
-                                 <button type="button" className="btn btn-info" onClick={()=>opPtTeam2(index,reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=>opPtTeam2(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=>opAsTeam2(index,reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=>opAsTeam2(reg, false)}>-</button>
                                  {reg.assists}
-                                 <button type="button" className="btn btn-info" onClick={()=>opAsTeam2(index,reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=>opAsTeam2(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=>opRebTeam2(index,reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=>opRebTeam2(reg, false)}>-</button>
                                  {reg.rebounds}
-                                 <button type="button" className="btn btn-info" onClick={()=>opRebTeam2(index,reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=>opRebTeam2(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=>opStoTeam2(index,reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=>opStoTeam2(reg, false)}>-</button>
                                  {reg.stoppers}
-                                 <button type="button" className="btn btn-info" onClick={()=>opStoTeam2(index,reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=>opStoTeam2(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=>opRobTeam2(index,reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=>opRobTeam2(reg, false)}>-</button>
                                  {reg.robberies}
-                                 <button type="button" className="btn btn-info" onClick={()=>opRobTeam2(index,reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=>opRobTeam2(reg, true)}>+</button>
                               </td>
                               <td>
-                                 <button type="button" className="btn btn-delete" onClick={()=>opFauTeam2(index,reg, false)}>-</button>
+                                 <button type="button" className="btn btn-delete" onClick={()=>opFauTeam2(reg, false)}>-</button>
                                  {reg.faults}
-                                 <button type="button" className="btn btn-info" onClick={()=>opFauTeam2(index,reg, true)}>+</button>
+                                 <button type="button" className="btn btn-info" onClick={()=>opFauTeam2(reg, true)}>+</button>
                               </td>
                               <td>
                                  <button onClick={() => deleteCustomer(reg.idStatistic)} className="btn btn-delete">Eliminar</button>
@@ -669,7 +706,7 @@ export const StatisticsPerGamePlayOff = () => {
 
             {/* REGISTRAR JUGADOR AL JUEGO  */}
             <div className="container-form hide hide_font" ref={refFundPlayer}>
-               <div className="card fadeUp" ref={refFadeUp}>
+               <div className="card fadeUp" ref={refFadeUpPlayer}>
                   <div className="card-header">
                      <span className='title'>{title}</span>
                      <button className='closeClient' onClick={closeClient}>X</button>
@@ -710,6 +747,31 @@ export const StatisticsPerGamePlayOff = () => {
                         </select>
                      </div>
                      <button onClick={() => validate()} className="btn btn-primary" >{btnSubmit}</button>
+                  </div>
+               </div>
+            </div>
+
+            {/* REGISTRAR PERIODO AL JUEGO  */}
+            <div className="container-form hide hide_font" ref={refFundPeriod}>
+               <div className="card fadeUp" ref={refFadeUpPeriod}>
+                  <div className="card-header">
+                     <span className='title'>{title}</span>
+                     <button className='closeClient' onClick={closeClientPeriod}>X</button>
+                  </div>
+
+                  <div className="card-body">
+                     <div className="mb-3">
+                        <label htmlFor="nameGame" className="form-label">Seleccione Partido</label>
+                        <select className="form-control" id="nameGame" name="nameGame" onChange={(e) => setNameGame(e.target.value)}>
+                           <option value="0">Seleccione El Partido</option>
+                           {
+                              nameGameList.map((gameList) =>
+                                 <option key={gameList.idCalendarPlayOff} value={gameList.idCalendarPlayOff}>{gameList.nameGame}</option>
+                              )
+                           }
+                        </select>
+                     </div>
+                     <button onClick={() => validatePeriod()} className="btn btn-primary" >{btnSubmit}</button>
                   </div>
                </div>
             </div>

@@ -14,6 +14,17 @@ export const closeClient = () => {
    }, 1500);
 }
 
+export const closeClientPeriod = () => {
+   const fadeUp = document.querySelector('.card');
+   fadeUp.classList.remove('fade-Up');
+   fadeUp.classList.add('fadeUp');
+
+   setTimeout(() => {
+      const hide_font = document.querySelector(".container-form");
+      hide_font.classList.add('hide_font');
+   }, 1500);
+}
+
 export const closeSelectGame = () => {
    const fadeUp = document.querySelector('.card2');
    fadeUp.classList.remove('fade-Up');

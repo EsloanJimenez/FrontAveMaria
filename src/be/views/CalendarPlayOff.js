@@ -16,7 +16,7 @@ import '../css/buttons.css'
 export const CalendarPlayOff = () => {
    let parameters;
 
-   const url = 'http://localhost:9000/api/calendarPlayOff';
+   const url = 'http://localhost:9000/api/';
    const urlOp = 'http://localhost:9000/api/updateCalendarPlayOff/';
 
    const [calendar, setCalendar] = useState([]);
@@ -45,7 +45,7 @@ export const CalendarPlayOff = () => {
    }, []);
 
    const getCalendar = async () => {
-      const res = await axios.get(url);
+      const res = await axios.get(`${url}calendarPlayOff`);
       setCalendar(res.data);
       
       const reg = await axios.get('http://localhost:9000/api/team');
@@ -86,7 +86,7 @@ export const CalendarPlayOff = () => {
          setStatus(status);
       }
    }
-
+   
    const validate = () => {
       let parameters;
 
@@ -102,12 +102,11 @@ export const CalendarPlayOff = () => {
                body: JSON.stringify(parameters)
             }
       
-            fetch(url, requestInit)
+            fetch(`${url}calendarPlayOff`, requestInit)
             .then(res => res.text())
             .then(res => {
-               let msj = 'Calendario Registrado';
             
-               show_alerta(msj, 'success');
+               show_alerta('Calendario Registrado', 'success');
    
                if(res === 'success') {
                   refPhotoTeam1.current.value = null;
@@ -167,7 +166,6 @@ export const CalendarPlayOff = () => {
       
             fetch('http://localhost:9000/deleteCalendarPlayOff/' + id, requestInit)
             .then(res => res.text())
-            .then(res => console.log(res))
 
             show_alerta('juego Eliminado', 'success')
             getCalendar();
@@ -304,6 +302,7 @@ export const CalendarPlayOff = () => {
          <div className="container-table">
             <div className='header'>
                <button name="newClient" className="btn-light btn-register" onClick={() => openModal(1)}><span><FontAwesomeIcon icon={faCirclePlus} /></span></button>
+
             </div>
 
             <div className='table'>
