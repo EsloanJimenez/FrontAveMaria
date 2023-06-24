@@ -9,7 +9,7 @@ export const PlayerStatiPlayOff = ({idPlayer}) => {
    }, [idPlayer])
 
    const getPlayerStatiPlayOff = async() => {
-      const stati = await axios(`http://localhost:9000/api/viewPlayerStatiPlayOff/${idPlayer}`);
+      const stati = await axios(`https://apiavemaria.onrender.com/api/viewPlayerStatiPlayOff/${idPlayer}`);
       setPlayerStatiPlayOff(stati.data);
    }
 
