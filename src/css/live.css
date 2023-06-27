@@ -1,0 +1,28 @@
+.live {
+   height: 100vh;
+   background-image: url(../images/banners/5-desktop.jpg);
+   background-size: cover;
+   background-attachment: fixed;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+}
+
+@media (max-width: 768px) {
+   .live {
+      height: 100vh;
+      background: url('../images/banners/5-movil.jpg');
+      background-size: cover;
+      background-attachment: fixed;
+      justify-content: space-around;
+   }
+   .live iframe:nth-child(1) {
+      width: 90%;
+      height: 350px;
+   }
+   .live table {
+      width: 90%;
+      margin: auto;
+   }
+}
