@@ -9,6 +9,7 @@ import { Footer } from "../components/Footer";
 
 import '../css/home.css';
 import '../css/animaciones.css';
+import { LiveBroadcast } from "./LiveBroadcast";
 
 const Home = () => {
    const refRegular = useRef([]);
@@ -111,6 +112,8 @@ const Home = () => {
          </div>
 
          <Header />
+
+         <LiveBroadcast />
 
          <Calendar
             calendar={calendar}

@@ -37,7 +37,7 @@ export const PlayOff = ({refTablePlayOffLeft, refTablePlayOffRight}) => {
          {
             calendar.map((reg, i) => (
                <div key={i} className='playInn' id={i == 1 ? 'round2' : i == 2 ? 'round3' : i == 3 ? 'round4' : ''}>
-                  <div ref={(e) => refTablePlayOffLeft.current[i] = e} className='teamA fadeLeft'>
+                  {/* <div ref={(e) => refTablePlayOffLeft.current[i] = e} className='teamA fadeLeft'>
                      <img width="50px" src={`http://localhost:9000/${reg.photoTeam1}`} alt="imagen rota" />
                      {reg.nameTeam1}
                   </div>
@@ -50,7 +50,7 @@ export const PlayOff = ({refTablePlayOffLeft, refTablePlayOffRight}) => {
                   <div ref={(e) => refTablePlayOffRight.current[i] = e} className="teamB fadeRight">
                      {reg.nameTeam2}
                      <img width="50px" src={`http://localhost:9000/${reg.photoTeam2}`} />
-                  </div>
+                  </div> */}
                </div>
             ))
          }
