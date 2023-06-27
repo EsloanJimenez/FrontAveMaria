@@ -28,6 +28,7 @@ export const StatisticsPerGamePlayOff = () => {
    const [ptTeam1, setPtTeam1] = useState([]);
    const [ptTeam2, setPtTeam2] = useState([]);
    const [board, setBoard] = useState([]);
+   const [periodo, setPeriodo] = useState([]);
 
    const [nameGame, setNameGame] = useState();
    const [nameTeam, setNameTeam] = useState(0);
@@ -77,6 +78,9 @@ export const StatisticsPerGamePlayOff = () => {
 
       const bd = await axios(`${url}board/${cal.data[0].idCalendarPlayOff}`);
       setBoard(bd.data);
+
+      const per = await axios(`${url}periodPlayOff/${cal.data[0].idCalendarPlayOff}`);
+      setPeriodo(per.data);
       
       const viewScoreTeam1 = await axios(`${url}scorePlayOffTeam1/${cal.data[0].idCalendarPlayOff}/${cal.data[0].team1}`);
       setPtTeam1(viewScoreTeam1.data);
@@ -567,6 +571,7 @@ export const StatisticsPerGamePlayOff = () => {
             ptTeam1={ptTeam1}
             ptTeam2={ptTeam2}
             board={board}
+            periodo={periodo}
          />
 
          <div className="container-table">

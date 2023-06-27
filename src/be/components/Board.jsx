@@ -1,31 +1,53 @@
 import { useEffect, useState } from 'react';
 import '../css/board.css'
-import axios from 'axios';
 
-export const Board = ({ ptTeam1, ptTeam2, board }) => {
+export const Board = ({ ptTeam1, ptTeam2, board, periodo }) => {
    const [pointsTeamA, setPointsTeamA] = useState(0);
    const [pointsTeamB, setPointsTeamB] = useState(0);
    const [faoutTeamA, setfaoutTeamA] = useState(0);
    const [faoutTeamB, setfaoutTeamB] = useState(0);
    const [timeOutTeamA, setTimeOutTeamA] = useState(0);
-   const [timeOutTeamB, setTimeOutTeamB] = useState(0);
-   const [cuarto, setCuarto] = useState(0);
+   const [timeOutTeamB, setTimeOutTeamB] = useState(0)
+
+   let temporizador, periodos;
+   let pointsA = 0;
+   let pointsB = 0;
+
+   const elementoEncontrado = board.find(reg => reg.room >= 0);
+   if(elementoEncontrado) {
+      temporizador = elementoEncontrado.timer;
+      periodos = elementoEncontrado.room;
+   }
+   else {
+      console.log(`El elemento no fue encontrado`);
+   }
 
    useEffect(() => {
-      setValue();
-      setRoom();
-   }, [board[0].room]);
+      setListPeriod();
+      setCondition();
+   }, [periodos]);
    
-   const setRoom = async () => {
+   const setListPeriod = () => {
+      setPointsTeamA(ptTeam1.map(reg => reg.pt))
+      setPointsTeamB(ptTeam2.map(reg => reg.pt))
+      setfaoutTeamA(ptTeam1.map(reg => reg.ft))
+      setfaoutTeamB(ptTeam2.map(reg => reg.ft));
+   }
 
+   console.log(pointsTeamA);
+   console.log(pointsTeamB);
+
+
+
+   const setRoom = () => {
       const requestInit = {
          method: 'POST',
          headers: {'Content-Type': 'application/json'},
          body: JSON.stringify({
             game: ptTeam1.map(reg => reg.game),
-            period: board[0].room,
-            pointsTeamA: pointsTeamA,
-            pointsTeamB: pointsTeamB,
+            period: board[0].room-1,
+            pointsTeamA: pointsA,
+            pointsTeamB: pointsB,
             faoutTeamA: faoutTeamA,
             faoutTeamB: faoutTeamB,
             timeOutTeamA: timeOutTeamA,
@@ -37,18 +59,16 @@ export const Board = ({ ptTeam1, ptTeam2, board }) => {
       .then(res => res.text())
    }
 
-   const setValue = () => {
-      setPointsTeamA(ptTeam1.map(reg => reg.pt))
-      setPointsTeamB(ptTeam2.map(reg => reg.pt))
-      setfaoutTeamA(ptTeam1.map(reg => reg.ft))
-      setfaoutTeamB(ptTeam2.map(reg => reg.ft))
+   const setCondition = () => {
+      if(pointsTeamA > 0) {
+         console.log(`equipo ya no tiene 0`);
+   
+         pointsA = pointsTeamA - pointsA;
+         pointsB = pointsTeamB - pointsB;
+         
+         setRoom();
+      } else console.log(`El equipo a todavia tiene 0`);
    }
-
-   console.log(`Puntos A: ${pointsTeamA}`);
-   console.log(`Puntos B: ${pointsTeamB} `);
-   console.log('===============');
-   console.log(`Faout A: ${faoutTeamA}`);
-   console.log(`Faout B: ${faoutTeamB}`);
 
    return (
       <>
@@ -57,7 +77,7 @@ export const Board = ({ ptTeam1, ptTeam2, board }) => {
                <table>
                   <tr>
                      <td className='value'>{ptTeam1.map(reg => reg.ft)}</td>
-                     {/* <td id='time'>{board[0].timer}</td> */}
+                     <td id='time'>{temporizador}</td>
                      <td className='value'>{ptTeam2.map(reg => reg.ft)}</td>
                   </tr>
                   <tr>
@@ -72,7 +92,7 @@ export const Board = ({ ptTeam1, ptTeam2, board }) => {
                   </tr>
                   <tr>
                      <td className='value'>{ptTeam1.map(reg => reg.pt)}</td>
-                     <td id='room'>{board[0].room == 5 ? 'OT' : board[0].room == 6 ? 'FINAL' : board[0].room > 6 ? 'FINAL/OT' : board[0].room < 1 ? '7:00 PM' : board[0].room}</td>
+                     <td id='room'>{periodos == 5 ? 'OT' : periodos == 6 ? 'FINAL' : periodos > 6 ? 'FINAL/OT' : periodos < 1 ? '7:00 PM' : periodos}</td>
                      <td className='value'>{ptTeam2.map(reg => reg.pt)}</td>
                   </tr>
                </table>
@@ -89,51 +109,19 @@ export const Board = ({ ptTeam1, ptTeam2, board }) => {
                      <td>Time-Out A</td>
                      <td>Time-Out B</td>
                   </tr>
-                  <tr>
-                     <td>1</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                  </tr>
-                  <tr>
-                     <td>2</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                  </tr>
-                  <tr>
-                     <td>3</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                  </tr>
-                  <tr>
-                     <td>4</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                  </tr>
-                  <tr>
-                     <td>Extra</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                     <td>0</td>
-                  </tr>
+                  {
+                     periodo.map((reg, i) => 
+                        <tr key={i}>
+                           <td>{reg.period}</td>
+                           <td>{reg.pointsTeamA}</td>
+                           <td>{reg.pointsTeamB}</td>
+                           <td>{reg.faoutTeamA}</td>
+                           <td>{reg.faoutTeamB}</td>
+                           <td>{reg.timeOutTeamA}</td>
+                           <td>{reg.timeOutTeamB}</td>
+                        </tr>
+                     )
+                  }
                </table>
             </article>
          </section>
