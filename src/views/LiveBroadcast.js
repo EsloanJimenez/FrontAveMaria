@@ -5,7 +5,7 @@ export const LiveBroadcast = () => {
 
          </iframe>
 
-         <iframe width="240" height="360" src="https://www.youtube.com/live_chat?v=ZkLSS_qliUc&embed_domain=torneosalomeurena.netlify.app"></iframe>
+         <iframe width="360" height="540" src="https://www.youtube.com/live_chat?v=ZkLSS_qliUc&embed_domain=torneosalomeurena.netlify.app"></iframe>
       </div>
    )
 }
