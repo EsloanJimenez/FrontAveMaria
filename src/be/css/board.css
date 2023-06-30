@@ -68,3 +68,29 @@
    font-weight: bold;
    font-family: DS-Digital;
 }
+[type="checkbox"]{display: none;}
+label {
+   padding-left: 1.3em;
+   position: relative;
+}
+label:before {
+   content: ' ';
+   width: 15px;
+   height: 15px;
+   margin: 0 5px;
+   border-radius: 50%;
+   background-color: #2cbb68;
+   box-shadow: 0 0 10px #2cbb68, 
+   0 0 30px #2cbb68, 
+   0 0 15px #2cbb68,
+   inset 1px 1px 2px #fff;
+   position: absolute;
+   left: 0;
+}
+[type="checkbox"]:checked + label::before {
+   background-color: #d03432;
+   box-shadow: 0 0 10px #d03432, 
+   0 0 30px #d03432, 
+   0 0 15px #d03432,
+   inset 1px 1px 2px #fff;
+}

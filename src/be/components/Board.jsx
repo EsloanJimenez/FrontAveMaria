@@ -1,69 +1,39 @@
 import { useEffect, useState } from 'react';
 import '../css/board.css'
 
-export const Board = ({ ptTeam1, ptTeam2, board, periodo }) => {
-   const [pointsTeamA, setPointsTeamA] = useState(0);
-   const [pointsTeamB, setPointsTeamB] = useState(0);
-   const [faoutTeamA, setfaoutTeamA] = useState(0);
-   const [faoutTeamB, setfaoutTeamB] = useState(0);
-   const [timeOutTeamA, setTimeOutTeamA] = useState(0);
-   const [timeOutTeamB, setTimeOutTeamB] = useState(0)
+let temporizador, periodos, i = 0;
 
-   let temporizador, periodos;
-   // let pointsA = 0;
-   // let pointsB = 0;
+export const Board = ({ ptTeam1, ptTeam2, board, periodo, room }) => {
+   const elementoEncontrado = board.find(reg => reg.room >= 0);
 
-   // const elementoEncontrado = board.find(reg => reg.room >= 0);
-   // if(elementoEncontrado) {
-   //    temporizador = elementoEncontrado.timer;
-   //    periodos = elementoEncontrado.room;
-   // }
-   // else {
-   //    console.log(`El elemento no fue encontrado`);
-   // }
+   if (elementoEncontrado) {
+      temporizador = elementoEncontrado.timer;
+      periodos = elementoEncontrado.room;
+   }
+   else {
+      console.log(`El elemento no fue encontrado`);
+   }
 
-   // useEffect(() => {
-   //    setListPeriod();
-   //    setCondition();
-   // }, [periodos]);
-   
-   // const setListPeriod = () => {
-   //    setPointsTeamA(ptTeam1.map(reg => reg.pt))
-   //    setPointsTeamB(ptTeam2.map(reg => reg.pt))
-   //    setfaoutTeamA(ptTeam1.map(reg => reg.ft))
-   //    setfaoutTeamB(ptTeam2.map(reg => reg.ft));
-   // }
+   useEffect(() => {
+      const requestInit = {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({
+            game: ptTeam1.map(reg => reg.game),
+            period: i + 1,
+            pointsTeamA: 0,
+            pointsTeamB: 0,
+            faoutTeamA: 0,
+            faoutTeamB: 0,
+            timeOutTeamA: 0,
+            timeOutTeamB: 0,
+         })
+      }
 
-   // const setRoom = () => {
-   //    const requestInit = {
-   //       method: 'POST',
-   //       headers: {'Content-Type': 'application/json'},
-   //       body: JSON.stringify({
-   //          game: ptTeam1.map(reg => reg.game),
-   //          period: board[0].room-1,
-   //          pointsTeamA: pointsA,
-   //          pointsTeamB: pointsB,
-   //          faoutTeamA: faoutTeamA,
-   //          faoutTeamB: faoutTeamB,
-   //          timeOutTeamA: timeOutTeamA,
-   //          timeOutTeamB: timeOutTeamB,
-   //       })
-   //    }
-
-   //    fetch('http://localhost:9000/api/roomPlayOff', requestInit)
-   //    .then(res => res.text())
-   // }
-
-   // const setCondition = () => {
-   //    if(pointsTeamA > 0) {
-   //       console.log(`equipo ya no tiene 0`);
-   
-   //       pointsA = pointsTeamA - pointsA;
-   //       pointsB = pointsTeamB - pointsB;
-         
-   //       setRoom();
-   //    } else console.log(`El equipo a todavia tiene 0`);
-   // }
+      fetch('http://localhost:9000/api/roomPlayOff', requestInit)
+         .then(res => res.text())
+      // }
+   }, [periodos]);
 
    return (
       <>
@@ -71,14 +41,32 @@ export const Board = ({ ptTeam1, ptTeam2, board, periodo }) => {
             <article className='artBoard'>
                <table>
                   <tr>
-                     <td className='value'>{ptTeam1.map(reg => reg.ft)}</td>
-                     {/* <td id='time'>{temporizador}</td> */}
-                     <td className='value'>{ptTeam2.map(reg => reg.ft)}</td>
+                     <td className='value'>{room.map(reg => reg.faoutTeamA)}</td>
+                     <td id='time'>{temporizador}</td>
+                     <td className='value'>{room.map(reg => reg.faoutTeamB)}</td>
                   </tr>
                   <tr>
-                     <td><div></div><div></div><div></div><div></div><div></div></td>
+                     <td>
+                        <input type='checkbox' id='timeOutA1' />
+                        <label htmlFor="timeOutA1"></label>
+
+                        <input type='checkbox' id='timeOutA2' />
+                        <label htmlFor="timeOutA2"></label>
+
+                        <input type='checkbox' id='timeOutA3' />
+                        <label htmlFor="timeOutA3"></label>
+                     </td>
                      <td></td>
-                     <td><div></div><div></div><div></div><div></div><div></div></td>
+                     <td>
+                        <input type='checkbox' id='timeOutB1' />
+                        <label htmlFor="timeOutB1"></label>
+
+                        <input type='checkbox' id='timeOutB2' />
+                        <label htmlFor="timeOutB2"></label>
+
+                        <input type='checkbox' id='timeOutB3' />
+                        <label htmlFor="timeOutB3"></label>
+                     </td>
                   </tr>
                   <tr>
                      <td>{ptTeam1.map(reg => reg.nameTeam)}</td>
@@ -87,14 +75,14 @@ export const Board = ({ ptTeam1, ptTeam2, board, periodo }) => {
                   </tr>
                   <tr>
                      <td className='value'>{ptTeam1.map(reg => reg.pt)}</td>
-                     {/* <td id='room'>{periodos == 5 ? 'OT' : periodos == 6 ? 'FINAL' : periodos > 6 ? 'FINAL/OT' : periodos < 1 ? '7:00 PM' : periodos}</td> */}
+                     <td id='room'>{periodos == 5 ? 'OT' : periodos == 6 ? 'FINAL' : periodos > 6 ? 'FINAL/OT' : periodos < 1 ? '7:00 PM' : periodos}</td>
                      <td className='value'>{ptTeam2.map(reg => reg.pt)}</td>
                   </tr>
                </table>
             </article>
 
             <article className='artBoard'>
-            <table>
+               <table>
                   <tr>
                      <td>Periodo</td>
                      <td>Puntos A</td>
@@ -105,7 +93,7 @@ export const Board = ({ ptTeam1, ptTeam2, board, periodo }) => {
                      <td>Time-Out B</td>
                   </tr>
                   {
-                     periodo.map((reg, i) => 
+                     periodo.map((reg, i) =>
                         <tr key={i}>
                            <td>{reg.period}</td>
                            <td>{reg.pointsTeamA}</td>
