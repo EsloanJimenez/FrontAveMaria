@@ -11,8 +11,10 @@ import { Board } from "../components/Board"
 import { closeClient, closeClientPeriod, closeSelectGame } from '../../js/RegistrationForm'
 import { show_alerta } from '../../js/Function'
 
+import { opPtTeam1, opAsTeam1, opRebTeam1, opStoTeam1, opRobTeam1, opFauTeam1, opPtTeam2, opAsTeam2, opRebTeam2, opStoTeam2, opRobTeam2, opFauTeam2 } from "../../js/StadisticPlayOff"
+
 import '../css/register.css'
-import '../css/buttons.css'
+import '../css/buttons.css';
 
 export const StatisticsPerGamePlayOff = () => {
    const url = 'http://localhost:9000/api/'
@@ -212,478 +214,6 @@ export const StatisticsPerGamePlayOff = () => {
       });
    }
 
-   const opPtTeam1 = async (player, op) => {
-      if (op) {
-         player.points += 1;
-
-         parameters = { idStatistic: player.idStatistic, points: player.points };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            });
-         
-         pointRoomA[pointRoomA.length-1] += 1;
-
-         fetch(`${url}roomPlayOffUpdate/${idRoom[0]}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-               idStatisticPerRoom: idRoom[0],
-               pointsTeamA: pointRoomA[pointRoomA.length-1]
-            })
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.points -= 1;
-
-         parameters = { idStatistic: player.idStatistic, points: player.points };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-
-         pointRoomA[pointRoomA.length-1] -= 1;
-
-         fetch(`${url}roomPlayOffUpdate/${idRoom[0]}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-               idStatisticPerRoom: idRoom[0],
-               pointsTeamA: pointRoomA[pointRoomA.length-1]
-            })
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opAsTeam1 = (player, op) => {
-      if (op) {
-         player.assists += 1;
-
-         parameters = { idStatistic: player.idStatistic, assists: player.assists };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.assists -= 1;
-
-         parameters = { idStatistic: player.idStatistic, assists: player.assists };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opRebTeam1 = (player, op) => {
-      if (op) {
-         player.rebounds += 1;
-
-         parameters = { idStatistic: player.idStatistic, rebounds: player.rebounds };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.rebounds -= 1;
-
-         parameters = { idStatistic: player.idStatistic, rebounds: player.rebounds };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opStoTeam1 = (player, op) => {
-      if (op) {
-         player.stoppers += 1;
-
-         parameters = { idStatistic: player.idStatistic, stoppers: player.stoppers };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.stoppers -= 1;
-
-         parameters = { idStatistic: player.idStatistic, stoppers: player.stoppers };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opRobTeam1 = (player, op) => {
-      if (op) {
-         player.robberies += 1;
-
-         parameters = { idStatistic: player.idStatistic, robberies: player.robberies };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.robberies -= 1;
-
-         parameters = { idStatistic: player.idStatistic, robberies: player.robberies };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opFauTeam1 = (player, op) => {
-      if (op) {
-         player.faults += 1;
-
-         parameters = { idStatistic: player.idStatistic, faults: player.faults };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-
-         faoutRoomA[faoutRoomA.length-1] += 1;
-
-         fetch(`${url}roomPlayOffUpdate/${idRoom[0]}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-               idStatisticPerRoom: idRoom[0],
-               faoutTeamA: faoutRoomA[faoutRoomA.length-1]
-            })
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.faults -= 1;
-
-         parameters = { idStatistic: player.idStatistic, faults: player.faults };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-
-         faoutRoomA[faoutRoomA.length-1] -= 1;
-
-         fetch(`${url}roomPlayOffUpdate/${idRoom[0]}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-               idStatisticPerRoom: idRoom[0],
-               faoutTeamA: faoutRoomA[faoutRoomA.length-1]
-            })
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opPtTeam2 = (player, op) => {
-      if (op) {
-         player.points += 1;
-
-         parameters = { idStatistic: player.idStatistic, points: player.points };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-
-         pointRoomB[pointRoomB.length-1] += 1;
-
-         fetch(`${url}roomPlayOffUpdate/${idRoom}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-               idStatisticPerRoom: idRoom,
-               pointsTeamB: pointRoomB[pointRoomB.length-1]
-            })
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.points -= 1;
-
-         parameters = { idStatistic: player.idStatistic, points: player.points };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-
-         pointRoomB[pointRoomB.length-1] -= 1;
-
-         fetch(`${url}roomPlayOffUpdate/${idRoom}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-               idStatisticPerRoom: idRoom,
-               pointsTeamB: pointRoomB[pointRoomB.length-1]
-            })
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opAsTeam2 = (player, op) => {
-      if (op) {
-         player.assists += 1;
-
-         parameters = { idStatistic: player.idStatistic, assists: player.assists };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.assists -= 1;
-
-         parameters = { idStatistic: player.idStatistic, assists: player.assists };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opRebTeam2 = (player, op) => {
-      if (op) {
-         player.rebounds += 1;
-
-         parameters = { idStatistic: player.idStatistic, rebounds: player.rebounds };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.rebounds -= 1;
-
-         parameters = { idStatistic: player.idStatistic, rebounds: player.rebounds };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opStoTeam2 = (player, op) => {
-      if (op) {
-         player.stoppers += 1;
-
-         parameters = { idStatistic: player.idStatistic, stoppers: player.stoppers };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.stoppers -= 1;
-
-         parameters = { idStatistic: player.idStatistic, stoppers: player.stoppers };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opRobTeam2 = (player, op) => {
-      if (op) {
-         player.robberies += 1;
-
-         parameters = { idStatistic: player.idStatistic, robberies: player.robberies };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.robberies -= 1;
-
-         parameters = { idStatistic: player.idStatistic, robberies: player.robberies };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
-   const opFauTeam2 = (player, op) => {
-      if (op) {
-         player.faults += 1;
-
-         parameters = { idStatistic: player.idStatistic, faults: player.faults };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-
-         faoutRoomB[faoutRoomB.length-1] += 1;
-
-         fetch(`${url}roomPlayOffUpdate/${idRoom[0]}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-               idStatisticPerRoom: idRoom[0],
-               faoutTeamB: faoutRoomB[faoutRoomB.length-1]
-            })
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      } else {
-         player.faults -= 1;
-
-         parameters = { idStatistic: player.idStatistic, faults: player.faults };
-
-         fetch(urlOp + player.idStatistic, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(parameters)
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-
-         faoutRoomB[faoutRoomB.length-1] -= 1;
-
-         fetch(`${url}roomPlayOffUpdate/${idRoom[0]}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-               idStatisticPerRoom: idRoom[0],
-               faoutTeamB: faoutRoomB[faoutRoomB.length-1]
-            })
-         }).then(res => res.text())
-            .then(res => {
-               getScore();
-            })
-      }
-   }
-
    return (
       <>
          <div>
@@ -729,34 +259,34 @@ export const StatisticsPerGamePlayOff = () => {
                                  <td>{reg.fullName}</td>
                                  <td>{reg.jacket}</td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opPtTeam1(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opPtTeam1(reg, false, pointRoomA, urlOp, getScore(), url, idRoom)}>-</button>
                                     {reg.points}
-                                    <button type="button" className="btn btn-info" onClick={() => opPtTeam1(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opPtTeam1(reg, true, pointRoomA, urlOp, getScore(), url, idRoom)}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opAsTeam1(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opAsTeam1(reg, false, urlOp, getScore())}>-</button>
                                     {reg.assists}
-                                    <button type="button" className="btn btn-info" onClick={() => opAsTeam1(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opAsTeam1(reg, true, urlOp, getScore())}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opRebTeam1(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opRebTeam1(reg, false, urlOp, getScore())}>-</button>
                                     {reg.rebounds}
-                                    <button type="button" className="btn btn-info" onClick={() => opRebTeam1(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opRebTeam1(reg, true, urlOp, getScore())}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opStoTeam1(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opStoTeam1(reg, false, urlOp, getScore())}>-</button>
                                     {reg.stoppers}
-                                    <button type="button" className="btn btn-info" onClick={() => opStoTeam1(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opStoTeam1(reg, true, urlOp, getScore())}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opRobTeam1(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opRobTeam1(reg, false, urlOp, getScore())}>-</button>
                                     {reg.robberies}
-                                    <button type="button" className="btn btn-info" onClick={() => opRobTeam1(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opRobTeam1(reg, true, urlOp, getScore())}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opFauTeam1(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opFauTeam1(reg, false, faoutRoomA, urlOp, getScore, url, idRoom)}>-</button>
                                     {reg.faults}
-                                    <button type="button" className="btn btn-info" onClick={() => opFauTeam1(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opFauTeam1(reg, true, faoutRoomA, urlOp, getScore, url, idRoom)}>+</button>
                                  </td>
                                  <td>
                                     <button onClick={() => deleteCustomer(reg.idStatistic, reg.game)} className="btn btn-delete">Eliminar</button>
@@ -793,34 +323,34 @@ export const StatisticsPerGamePlayOff = () => {
                                  <td>{reg.fullName}</td>
                                  <td>{reg.jacket}</td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opPtTeam2(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opPtTeam2(reg, false, pointRoomB, urlOp, getScore(), url, idRoom)}>-</button>
                                     {reg.points}
-                                    <button type="button" className="btn btn-info" onClick={() => opPtTeam2(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opPtTeam2(reg, true, pointRoomB, urlOp, getScore(), url, idRoom)}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opAsTeam2(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opAsTeam2(reg, false, urlOp, getScore())}>-</button>
                                     {reg.assists}
-                                    <button type="button" className="btn btn-info" onClick={() => opAsTeam2(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opAsTeam2(reg, true, urlOp, getScore())}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opRebTeam2(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opRebTeam2(reg, false, urlOp, getScore())}>-</button>
                                     {reg.rebounds}
-                                    <button type="button" className="btn btn-info" onClick={() => opRebTeam2(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opRebTeam2(reg, true, urlOp, getScore())}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opStoTeam2(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opStoTeam2(reg, false, urlOp, getScore())}>-</button>
                                     {reg.stoppers}
-                                    <button type="button" className="btn btn-info" onClick={() => opStoTeam2(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opStoTeam2(reg, true, urlOp, getScore())}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opRobTeam2(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opRobTeam2(reg, false, urlOp, getScore())}>-</button>
                                     {reg.robberies}
-                                    <button type="button" className="btn btn-info" onClick={() => opRobTeam2(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opRobTeam2(reg, true, urlOp, getScore())}>+</button>
                                  </td>
                                  <td>
-                                    <button type="button" className="btn btn-delete" onClick={() => opFauTeam2(reg, false)}>-</button>
+                                    <button type="button" className="btn btn-delete" onClick={() => opFauTeam2(reg, false, faoutRoomB, urlOp, getScore(), url, idRoom)}>-</button>
                                     {reg.faults}
-                                    <button type="button" className="btn btn-info" onClick={() => opFauTeam2(reg, true)}>+</button>
+                                    <button type="button" className="btn btn-info" onClick={() => opFauTeam2(reg, true, faoutRoomB, urlOp, getScore(), url, idRoom)}>+</button>
                                  </td>
                                  <td>
                                     <button onClick={() => deleteCustomer(reg.idStatistic)} className="btn btn-delete">Eliminar</button>
