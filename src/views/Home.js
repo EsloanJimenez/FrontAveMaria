@@ -9,7 +9,7 @@ import { Footer } from "../components/Footer";
 
 import '../css/home.css';
 import '../css/animaciones.css';
-import { LiveBroadcast } from "./LiveBroadcast";
+// import { LiveBroadcast } from "./LiveBroadcast";
 
 
 const Home = () => {
